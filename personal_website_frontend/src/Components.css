@@ -1,0 +1,4 @@
+#linkedInLogo:hover {
+    cursor: pointer;
+    filter: brightness(120%);
+}

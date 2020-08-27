@@ -1,14 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import { Router, Switch, Route } from "react-router-dom";
+import history from './history';
+import Home from './Home';
 import * as serviceWorker from './serviceWorker';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './Components.css';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  <Router history={history}>
+  <Switch>
+      <Route exact path="/">
+        <Home/>
+      </Route>
+  </Switch>
+</Router>,
+document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
