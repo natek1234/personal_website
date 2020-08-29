@@ -1,4 +1,58 @@
+@import '../node_modules/antd/dist/antd.css';
+
+html, body, #root {
+    height: 100%;
+    margin: 0;
+  }
+
 #linkedInLogo:hover {
     cursor: pointer;
     filter: brightness(120%);
+}
+
+#HomePageContent {
+    height: 100%;
+}
+
+#PageBody {
+    height: 100%;
+    /*background-color: rgb(67, 67, 110);*/
+    background-color: rgb(223, 221, 221);
+    vertical-align: top;
+}
+
+#Carousel {
+    width: 50%;
+    height: 100%;
+    padding: 30px;
+    display: inline-block;
+}
+
+#HomePageCarousel {
+    margin-bottom: 30px;
+}
+
+
+#test {
+    background-image: url('./images/3MluKk2.png'); /* The image used */
+    background-color: #cccccc; /* Used if the image is unavailable */
+    height: 600px; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    overflow: clip;
+}
+
+#HomePageText{
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+    padding: 40px;
+    text-align: center;
+    height: 100%;
+}
+
+#PageFooter {
+    margin: 50px;
+    padding: 50px;
 }
