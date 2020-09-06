@@ -20,6 +20,11 @@ class EWB extends React.Component {
                 <PageHeader id='PageHeader'/>
 
                 <div id='PageBody'>
+                <   div id='EWBPageText' style={{ padding: '40px'}}>
+                            <h1 style={{ paddingBottom: '20px', fontSize: '2.5vw'}}>
+                                <b>Engineers Without Borders (EWB) Canada</b>
+                            </h1>
+                    </div>
                 </div>
 
                 <PageFooter id='PageFooter' />

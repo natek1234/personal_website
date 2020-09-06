@@ -20,6 +20,11 @@ class Manulife extends React.Component {
                 <PageHeader id='PageHeader'/>
 
                 <div id='PageBody'>
+                    <div id='ManulifePageText' style={{ padding: '40px'}}>
+                            <h1 style={{ paddingBottom: '20px', fontSize: '2.5vw'}}>
+                                <b>Manulife Co-op - Summer 2020</b>
+                            </h1>
+                    </div>
                 </div>
 
                 <PageFooter id='PageFooter' />

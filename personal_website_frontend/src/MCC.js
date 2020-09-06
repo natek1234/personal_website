@@ -20,6 +20,11 @@ class MCC extends React.Component {
                 <PageHeader id='PageHeader'/>
 
                 <div id='PageBody'>
+                    <div id='MCCPageText' style={{ padding: '40px'}}>
+                            <h1 style={{ paddingBottom: '20px', fontSize: '2.5vw'}}>
+                                <b>High School Multicultural Committee (MCC)</b>
+                            </h1>
+                    </div>
                 </div>
 
                 <PageFooter id='PageFooter' />

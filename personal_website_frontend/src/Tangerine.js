@@ -20,6 +20,11 @@ class Tangerine extends React.Component {
                 <PageHeader id='PageHeader'/>
 
                 <div id='PageBody'>
+                    <div id='TangerinePageText' style={{ padding: '40px'}}>
+                            <h1 style={{ paddingBottom: '20px', fontSize: '2.5vw'}}>
+                                <b>Tangerine Co-op - Summer 2019</b>
+                            </h1>
+                    </div>
                 </div>
 
                 <PageFooter id='PageFooter' />

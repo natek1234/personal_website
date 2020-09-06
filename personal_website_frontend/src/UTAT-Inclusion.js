@@ -20,6 +20,11 @@ class UTATInclusion extends React.Component {
                 <PageHeader id='PageHeader'/>
 
                 <div id='PageBody'>
+                    <div id='UTATInclusionPageText' style={{ padding: '40px'}}>
+                            <h1 style={{ paddingBottom: '20px', fontSize: '2.5vw'}}>
+                                <b>University of Toronto Aerospace Team (UTAT) Space Systems Inclusion Initiative</b>
+                            </h1>
+                    </div>
                 </div>
 
                 <PageFooter id='PageFooter' />

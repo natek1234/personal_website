@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Container, Row, Col, Nav, Form } from 'react-bootstrap';
+import { Navbar, Container, Row, Col, Nav } from 'react-bootstrap';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import history from '../history'
 
@@ -21,7 +21,7 @@ class PageFooter extends React.Component {
                     <Row>
                         <Col style={{ borderRight: '1px solid #595959', padding: '20px'}} >
                             <Navbar.Brand onClick={() => history.push('/')}>
-                                <p><b style={{ fontSize: '30px'}}>Ketan<br></br>Vasudeva</b></p>
+                                <b style={{ fontSize: '30px', color: 'white'}}>Ketan<br></br>Vasudeva</b>
                                 </Navbar.Brand>
                         </Col>
                         <Col>
