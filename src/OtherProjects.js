@@ -1,7 +1,7 @@
 import React from 'react';
 import PageHeader from './Components/PageHeader';
 import PageFooter from './Components/PageFooter';
-import { Image } from 'react-bootstrap';
+//import { Image } from 'react-bootstrap';
 
 
 class OtherProjects extends React.Component {
