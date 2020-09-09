@@ -1,9 +1,10 @@
 import React from 'react';
 import PageHeader from './Components/PageHeader';
 import PageFooter from './Components/PageFooter';
+import { Image } from 'react-bootstrap';
 
 
-class UTATSS extends React.Component {
+class OtherProjects extends React.Component {
 
     constructor(props) {
       super(props);
@@ -15,16 +16,11 @@ class UTATSS extends React.Component {
     render() {
 
         return (
-            <div id='UTATSSPageContent'>
+            <div id='OtherProjectsPageContent'>
 
                 <PageHeader id='PageHeader'/>
 
                 <div id='PageBody'>
-                    <div id='UTATSSPageText' style={{ padding: '40px'}}>
-                            <h1 style={{ paddingBottom: '20px', fontSize: '2.5vw'}}>
-                                <b>University of Toronto Aerospace Team (UTAT) Space Systems Division</b>
-                            </h1>
-                    </div>
                 </div>
 
                 <PageFooter id='PageFooter' />
@@ -33,4 +29,4 @@ class UTATSS extends React.Component {
     }
 }
 
-export default UTATSS;
+export default OtherProjects;

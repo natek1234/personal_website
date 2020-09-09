@@ -25,12 +25,21 @@ class Home extends React.Component {
 
                     <div id='Carousel'>
                         <Carousel id='HomePageCarousel' vertical='true' dotPosition='bottom' autoplay  >
+                            {/* Make all pics 615x590px*/}
                             <Image
-                                src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                            src='./images/Ketan_Landing.jpg'
+                            alt='could not find image'
+                            />
+                            <Image 
+                            src='./images/Ketan_Landing22.jpg'
+                            alt='could not find image'
+                            />
+                            <Image 
+                            src='./images/Praxis_2.jpg'
+                            alt='could not find image'
                             />
                             <Image
-                                style={{ width: '20%', height: '100%'}}
-                                src='./images/blue_sky2.png'
+                                src='./images/blue_sky3.png'
                                 alt='could not find image'
                             /> 
 

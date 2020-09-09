@@ -25,15 +25,13 @@ class AboutMe extends React.Component {
                         <h1 style={{ paddingBottom: '20px', fontSize: '2.5vw'}}>
                             <b>About Me</b>
                         </h1>
-                        <div style={{ width: '25%', display: 'inline-block', verticalAlign: 'top'}}>
-                        <Image fluid
-                            src='./images/placeholder.jpg'
+                        <Image style={{ width: '29%', display: 'inline-block', verticalAlign: 'top'}}
+                            src='./images/About_Me_pic.jpg'
                             alt='could not find image'
                         />
-                        </div>
                         <div style={{ width: '70%', display: 'inline-block', padding: '10px'}}>
                             <p>
-                            My story begins as a bit of a haphazard mess. I was born in Zoetermeer, Netherlends, to my French mother and
+                            My story begins as a bit of a chaotic adventure. I was born in Zoetermeer, Netherlends, to my French mother and
                             Indian father. From there, I moved around quite a bit, to Ireland, France, back to Ireland, and landing in Canada. Within 
                             Canada, I lived in Gatineau, Quebec before finally 
                             settling down in the city of Oshawa, Ontario where I would spend the majority of my adolescent years. 
@@ -46,11 +44,17 @@ class AboutMe extends React.Component {
                             various types of schools, from religious Christian and Catholic schools, to secular public schools. In all,
                             the experience helped shape who I am and helped provide me with a global world view.
                             </p>
+                            <p>
+                            Throughout my adventure, there are two things that I learned to value the most above all else. First, I learned to value
+                            the people. It is the people that make this world a wonderful, exciting, and evolving world. Everything I do,
+                            in my life and in my career, is for the these wonderful people. Second, I learned that I should always push myself to improve,
+                            since somewhere out there, there are other people also trying their absolute best.
+                            </p>
                         </div>
-                        <h2 style={{ paddingBottom: '20px', fontSize: '2.5vw'}}>
+                        <h2 style={{ paddingTop: '10px', fontSize: '2.5vw'}}>
                             Sporting Career
                         </h2>
-                        <div style={{ width: '60%', display: 'inline-block', padding: '10px', paddingLeft: '0px', paddingTop: '15px'}}>
+                        <div style={{ width: '60%', display: 'inline-block', padding: '10px', paddingLeft: '0px'}}>
                             <p>
                             Throughout my life I have always taken an intense interest in sports. Sports are a fun way for me to tap into my inner competitive
                             spirit. To this day, I would say that sports are my greatest destresser and they help keep me focused on my other more
