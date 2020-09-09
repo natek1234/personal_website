@@ -20,7 +20,7 @@ class Resume extends React.Component {
                 <PageHeader id='PageHeader'/>
 
                 <div id='PageBody'>
-                    <iframe src="https://docs.google.com/gview?url=https://github.com/natek1234/Resumes/raw/21f61c5919028ecb8ddee26d200ce4c3ffa090a3/Ketan_Vasudeva_Resume.pdf&embedded=true" style={{ width: '100%', height:'100%'}} frameborder="0"></iframe>
+                    <iframe src="https://docs.google.com/gview?url=https://github.com/natek1234/Resumes/raw/21f61c5919028ecb8ddee26d200ce4c3ffa090a3/Ketan_Vasudeva_Resume.pdf&embedded=true" style={{ width: '100%', height:'100%'}} frameborder="0" title='myResume'></iframe>
                 </div>
 
                 <PageFooter id='PageFooter' />
