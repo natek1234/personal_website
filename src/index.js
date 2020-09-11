@@ -13,7 +13,8 @@ import Resume from './Resume';
 import Tangerine from './Tangerine';
 import UTATInclusion from './UTAT-Inclusion'; 
 import UTATSS from './UTAT-SS';
-import OtherProjects from './OtherProjects';
+import Hackathons from './Hackathons';
+import ProgrammingProjects from './ProgrammingProjects'
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Components.css';
@@ -51,8 +52,11 @@ ReactDOM.render(
       <Route exact path="/utat-ss">
         <UTATSS/>
       </Route>
-      <Route exact path="/other-projects">
-        <OtherProjects/>
+      <Route exact path="/hackathons">
+        <Hackathons/>
+      </Route>
+      <Route exact path="/programming">
+        <ProgrammingProjects/>
       </Route>
   </Switch>
 </Router>,

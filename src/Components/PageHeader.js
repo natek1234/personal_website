@@ -25,7 +25,8 @@ class PageHeader extends React.Component {
                     <NavDropdown.Item onClick={() => history.push('/tangerine')}>Tangerine</NavDropdown.Item>
                     <NavDropdown.Item onClick={() => history.push('/manulife')}>Manulife</NavDropdown.Item>
                     <NavDropdown.Item onClick={() => history.push('/utat-ss')}>UTAT - Space Systems</NavDropdown.Item>
-                    <NavDropdown.Item onClick={() => history.push('/other-projects')}>Other Projects</NavDropdown.Item>
+                    <NavDropdown.Item onClick={() => history.push('/hackathons')}>Hackathons</NavDropdown.Item>
+                    <NavDropdown.Item onClick={() => history.push('/programming')}>Programming Projects</NavDropdown.Item>
                 </NavDropdown>
                 <NavDropdown title="Advocacy & Engagement" id="basic-nav-dropdown">
                     <NavDropdown.Item onClick={() => history.push('/mcc')}>High School Multicultural Committee</NavDropdown.Item>

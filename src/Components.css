@@ -5,14 +5,14 @@ html, body, #root {
     margin: 0;
   }
 
-  p { color: black; font-family: 'Droid Sans', sans-serif; font-size: 1.3vw; font-weight: 400; line-height: 24px; margin: 0 0 14px; }
+p { color: black; font-family: 'Droid Sans', sans-serif; font-size: 1.3vw; font-weight: 400; line-height: 24px; margin: 0 0 14px; }
 
 #linkedInLogo:hover {
     cursor: pointer;
     filter: brightness(120%);
 }
 
-#ResumePageContent, #OtherProjectsPageContent {
+#ResumePageContent {
     height: 100%;
 }
 
