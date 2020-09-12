@@ -16,7 +16,7 @@ class PageHeader extends React.Component {
     }
     render() {
         return (
-            <Navbar bg="dark" expand="lg" variant='dark' id='NavBar'>
+            <Navbar style={{ paddingTop: '15px', paddingBottom: '15px'}} bg="dark" expand="lg" variant='dark' id='NavBar'>
             <Image style={{ width: '5%', display: 'inline-block', verticalAlign: 'top'}}
                 src='./images/Ketan_logo_blue1.png'
                 alt='could not find image'
