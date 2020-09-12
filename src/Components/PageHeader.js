@@ -1,6 +1,8 @@
 import React from 'react';
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
+import { Image } from 'react-bootstrap';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import GitHubIcon from '@material-ui/icons/GitHub';
 import history from '../history';
 
 
@@ -15,10 +17,14 @@ class PageHeader extends React.Component {
     render() {
         return (
             <Navbar bg="dark" expand="lg" variant='dark' id='NavBar'>
-            <Navbar.Brand onClick={() => history.push('/')}><b style={{ fontSize: '30px'}}>Ketan Vasudeva</b></Navbar.Brand>
+            <Image style={{ width: '5%', display: 'inline-block', verticalAlign: 'top'}}
+                src='./images/Ketan_logo_blue1.png'
+                alt='could not find image'
+            />
+            <Navbar.Brand onClick={() => history.push('/')}><b style={{ fontSize: '25px', paddingLeft: '5px'}}>Ketan Vasudeva</b></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="mr-auto" style={{ fontSize: '17px'}}>
+                <Nav className="mr-auto" style={{ fontSize: '17px' }}>
                 <Nav.Link onClick={() => history.push('/')}>Home</Nav.Link>
                 <Nav.Link onClick={() => history.push('/about-me')}>About Me</Nav.Link>
                 <NavDropdown title="Experience" id="basic-nav-dropdown">
@@ -37,7 +43,10 @@ class PageHeader extends React.Component {
                 <Nav.Link onClick={() => history.push('/contact-me')}>Contact Me</Nav.Link>
                 </Nav>
                 <Form inline >
-                <Nav.Link href="https://www.linkedin.com/in/ketan-vasudeva-2305b7177/">
+                <Nav.Link href="https://www.github.com/natek1234" style={{ padding: '0', paddingRight: '5px'}}>
+                    <GitHubIcon id='githubLogo' color='action' style={{ fontSize: '40px'}}/>
+                </Nav.Link>
+                <Nav.Link href="https://www.linkedin.com/in/ketan-vasudeva-2305b7177/" style={{ padding: '0', paddingRight: '5px'}}>
                     <LinkedInIcon id='linkedInLogo' color='primary' style={{ fontSize: '45px'}}/>
                 </Nav.Link>
 

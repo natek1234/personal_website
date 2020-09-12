@@ -12,6 +12,11 @@ p { color: black; font-family: 'Droid Sans', sans-serif; font-size: 1.3vw; font-
     filter: brightness(120%);
 }
 
+#githubLogo:hover {
+    cursor: pointer;
+    color: rgb(111, 105, 204);
+}
+
 #ResumePageContent {
     height: 100%;
 }
