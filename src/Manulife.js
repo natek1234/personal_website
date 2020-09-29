@@ -31,7 +31,7 @@ class Manulife extends React.Component {
                             </p>
                             <p>
                             <b>Job Description: </b> At Manulife, I was working as a full-stack software engineer in the Canadian Architecture division.
-                            Mainly, coops would work with architects to create Poof of Technologies (PoTs) to demonstrate innovative and potentially
+                            Mainly, coops would work with architects to create Proof of Technologies (PoTs) to demonstrate innovative and potentially
                             implementable solutions. Specifically, I worked in Security Architecture to help automate their Architecture Risk Analysis
                             report process. I worked as my own development team and created a tool which would act to partially automate the process
                             by leveraging previously entered data as well as compiled research to aid in filling out the repetitive reports.
