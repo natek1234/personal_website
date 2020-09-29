@@ -47,7 +47,7 @@ class UTATInclusion extends React.Component {
                             engineering community. Too often, technical professions such as engineering like to divorce themselves from social issues.
                             We often hear "but we just want to build" so and so, without much thought for the consequences of the design decisions. However,
                             no matter how hard engineers may try to remove themselves, they are still important and influential members in society. Bias will
-                            inflitrate our machine learning models and algorithms and design decisions may adversely impact certain communities more harshly.
+                            infiltrate our machine learning models and algorithms and design decisions may adversely impact certain communities more harshly.
                             With this in mind, the Inclusion initiative at UTAT seeks to bring forward engineering as a social actor to help fight against injustices
                             in our communities.
                             </p>
@@ -56,9 +56,9 @@ class UTATInclusion extends React.Component {
                             <p>
                             Our early work has had promising results. We are working on both improving our team internally and reaching out to our engineering community
                             through speaking with faculty and outreach to students. Many EDI-related conversations have been integrated into our team's recruitment
-                            process and documentation is being reviewed to make sure terminology is non-desriminatory and inclusive. We are actively researching how 
+                            process and documentation is being reviewed to make sure terminology is non-discriminatory and inclusive. We are actively researching how 
                             the admissions process for engineering impacts various communities (such as underserviced communities) and how we can engage a broader, more 
-                            multicultural youth prescence in engineering. All of this work is just one small step on a long road, but we hope to keep moving our community 
+                            multicultural youth presence in engineering. All of this work is just one small step on a long road, but we hope to keep moving our community 
                             forward, one step at a time.
                             </p>
                         </div>

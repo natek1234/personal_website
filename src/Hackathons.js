@@ -54,11 +54,11 @@ class Hackathons extends React.Component {
                     </h2>
                     <div style={{ width: '70%', display: 'inline-block', paddingRight: '10px'}}>
                         <p>
-                        The UTDL Designathon was a bit of a unique concept. It brought together a more multidiscplinary approach to the hackathon format.
+                        The UTDL Designathon was a bit of a unique concept. It brought together a more multidisciplinary approach to the hackathon format.
                         Notably, rather than building a piece of software, we were building actual physical prototypes for the challenges. The challenge 
                         we took up was to design and create a method for reducing home delivery package theft (such as for online shopping). Our team decided that
-                        the most efficient and least invasive method to do so was to design a security box with bluetooth recognition that would only be accessible
-                        to the home owner. We used Arduino, CAD, and various motors to produce the security box. My main roles on the team were coding the bluetooth 
+                        the most efficient and least invasive method to do so was to design a security box with Bluetooth recognition that would only be accessible
+                        to the homeowner. We used Arduino, CAD, and various motors to produce the security box. My main roles on the team were coding the Bluetooth 
                         and motor implementations, as well as physical integration of the prototype in our fabrication facility.
                         </p>
                     </div>

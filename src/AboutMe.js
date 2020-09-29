@@ -32,7 +32,7 @@ class AboutMe extends React.Component {
                         <div style={{ width: '70%', display: 'inline-block', padding: '10px'}}>
                             <p style={{ paddingTop: '0', marginTop: '-15px'}}><b>Education: </b> University of Toronto, Engineering Science - Robotics Major</p>
                             <p>
-                            My story begins as a bit of a chaotic adventure. I was born in Zoetermeer, Netherlends, to my French mother and
+                            My story begins as a bit of a chaotic adventure. I was born in Zoetermeer, Netherlands, to my French mother and
                             Indian father. From there, I moved around quite a bit, to Ireland, France, back to Ireland, and landing in Canada. Within 
                             Canada, I lived in Gatineau, Quebec before finally 
                             settling down in the city of Oshawa, Ontario where I would spend the majority of my adolescent years. 
@@ -48,7 +48,7 @@ class AboutMe extends React.Component {
                             <p>
                             Throughout my adventure, there are two things that I learned to value the most above all else. First, I learned to value
                             the people. It is the people that make this world a wonderful, exciting, and evolving world. Everything I do,
-                            in my life and in my career, is for the these wonderful people. Second, I learned that I should always push myself to improve,
+                            in my life and in my career, is for these wonderful people. Second, I learned that I should always push myself to improve,
                             since somewhere out there, there are other people also trying their absolute best.
                             </p>
                         </div>
@@ -74,7 +74,7 @@ class AboutMe extends React.Component {
                             <ul>
                                 <li style={{ paddingBottom: '10px'}}>I will enter the Robotics R&D field to help develop the next generation of technologies</li>
                                 <li style={{ paddingBottom: '10px'}}>I will work for some time in the Space Exploration industry, helping pave the way for humanity to take to the stars</li>
-                                <li style={{ paddingBottom: '10px'}}>I will work my jobs, not for the money or security, but because I love to do them. They will help me towards my ultimate goal of helping to advance humanity</li>
+                                <li style={{ paddingBottom: '10px'}}>I will work my jobs because I love to do them, and not for vain reasons. They will help me towards my ultimate goal of helping to advance humanity</li>
                             </ul>
                         </p>
                         <p style={{ width: '33%', display: 'inline-block', verticalAlign: 'top', paddingRight: '10px'}}>
@@ -96,7 +96,7 @@ class AboutMe extends React.Component {
                             for Football (European) and became a huge Barcelona fan. I even played traditional Irish sports, such as Hurley and Irish 
                             Football. From there, after moving to Canada, I picked up Tennis in Gatineau. Tennis became my main competitive sport, playing
                             for 10 years competitively before university. Even throughout elementary school I dabbled in various sports such as Track
-                            and Volleyball. Once I reached highschool, I decided to pick up Basketball and Ultimate Frisbee. Over the course of my 4 
+                            and Volleyball. Once I reached high school, I decided to pick up Basketball and Ultimate Frisbee. Over the course of my 4 
                             high school years, I played Football, Basketball, and Ultimate Frisbee yearly, earning some school MVPs and one Athlete of the
                             Year award. As I continued to play Tennis outside of school, I also started playing club Ultimate Frisbee. As a junior and adult,
                             my club team went to nationals on multiple occasions. I took this into university and played on the University of Toronto

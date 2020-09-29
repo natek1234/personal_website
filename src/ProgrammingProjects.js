@@ -41,7 +41,7 @@ class ProgrammingProjects extends React.Component {
                     </p>
                     <p>
                         <b>Auto Speedtest and Analysis - Python: </b> This project was largely brewed out of frustration with my internet provider.
-                        In order to show the poor performance of the provider over time, I decided to create a script/API which would leverate the Ookla
+                        In order to show the poor performance of the provider over time, I decided to create a script/API which would leverage the Ookla
                         Speedtest CLI tool, Matplotlib, and Numpy in order to continuously perform speedtests over time. These speedtests are then
                         graphed on a plot. The supported measured values include download speed, upload speed, latency, and jitter data.
                     </p>
@@ -81,7 +81,7 @@ class ProgrammingProjects extends React.Component {
                         <b>Projects</b>
                     </p>
                     <p>
-                        <b>Jetpack Game - Java: </b> One of my major high school projects involved to create a mario-themed jetpack-joyride-inspired
+                        <b>Jetpack Game - Java: </b> One of my major high school projects involved to create a Mario-themed jetpack-joyride-inspired
                         game. This was my first real experience in visually representing a game on a screen. I learned many of the difficulties of
                         object-oriented programming as well as how to manage a multi-file application. 
                     </p>
@@ -102,7 +102,7 @@ class ProgrammingProjects extends React.Component {
                         high school experience, I was able to apply coding techniques to many areas. Some areas I was able to use these skills in
                         include simulations, firmware, control systems, FPGAs, and MCUs. I also learned non-object-oriented programming and memory management through C.
                         Although theoretical knowledge is a fundamental asset,
-                        nothing can outweight the benefit of applying the knowledge you gain in practice.
+                        nothing can outweigh the benefit of applying the knowledge you gain in practice.
                     </p>
                     <p>
                         <b>Projects</b>
@@ -110,7 +110,7 @@ class ProgrammingProjects extends React.Component {
                     <p>
                         <b>Chess Player AI - Python: </b> Our major summative project in first year was to use create a chess player AI algorithm that could play
                         and potentially win against a human. In order to accomplish this task, I implemented a mini-max tree solution which essentially
-                        acted to recusively search through possible future moves and grade them based on a scoring system. This task proved to be challenging
+                        acted to recursively search through possible future moves and grade them based on a scoring system. This task proved to be challenging
                         because although the algorithm can easily be improved and made more intelligent by increasing its "future move" search depth,
                         this in turn drastically increases the runtime of the algorithm. This runtime was constrained by the assignment requirements,
                         thus optimizing the algorithm was also an unspoken secondary task to the assignment. 

@@ -31,7 +31,7 @@ class Tangerine extends React.Component {
                             </p>
                             <p>
                             <b>Job Description: </b> At Tangerine, I was working as an intern in the Project Management Office, helping to manage and 
-                            organize development projects across the comapany. This included acting as a communication link between the PMO and the squads,
+                            organize development projects across the company. This included acting as a communication link between the PMO and the squads,
                             helping with the project financials, and preparing reports and presentations on the Agile transformation process at Tangerine.
                             </p>
                             <p>

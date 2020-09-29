@@ -29,10 +29,10 @@ class MCC extends React.Component {
                             <b>Role: </b> Co-founder
                             </p>
                             <p>
-                            <b>Experience: </b> In high school, a group of students and I discovered that there was a huge underepresentation of 
+                            <b>Experience: </b> In high school, a group of students and I discovered that there was a huge underrepresentation of 
                             minority communities. We often found ourselves wondering "why does no one celebrate our cultures?" or "why does no 
                             one care about our problems?". Our solution to this was to create the school's first Multicultural Committee. The committee's
-                            job would be to bring together the school community in celebrating, supporting, and advocacting for people of
+                            job would be to bring together the school community in celebrating, supporting, and advocating for people of
                             all cultures and ethnic background. Very quickly, our dream turned to reality.
                             </p>
                             </div>
