@@ -871,7 +871,7 @@ Expected: FAIL — `Nav` doesn't exist.
 
 ```tsx
 import { NavLink } from 'react-router-dom';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Logo } from '../Logo';
 import { useTheme } from '../../theme/ThemeContext';
 import { MobileMenu } from './MobileMenu';
@@ -888,6 +888,7 @@ const LINKS = [
 export function Nav() {
   const { theme, toggleTheme } = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
 
   return (
     <header className="sticky top-0 z-40 border-b border-muted-light/20 bg-base-light/90 backdrop-blur dark:bg-base-dark/90">
@@ -910,12 +911,18 @@ export function Nav() {
           <button onClick={toggleTheme} aria-label={`Toggle theme, currently ${theme}`}>
             {theme === 'light' ? '🌙' : '☀️'}
           </button>
-          <button className="md:hidden" aria-label="Open menu" aria-expanded={mobileOpen} onClick={() => setMobileOpen(true)}>
+          <button
+            ref={hamburgerRef}
+            className="md:hidden"
+            aria-label="Open menu"
+            aria-expanded={mobileOpen}
+            onClick={() => setMobileOpen(true)}
+          >
             ☰
           </button>
         </div>
       </div>
-      <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} links={LINKS} />
+      <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} links={LINKS} triggerRef={hamburgerRef} />
     </header>
   );
 }
@@ -930,6 +937,7 @@ Expected: PASS
 
 `src/components/layout/MobileMenu.test.tsx`:
 ```tsx
+import { createRef } from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
@@ -942,14 +950,14 @@ describe('MobileMenu', () => {
   it('is hidden when closed and visible when open', () => {
     const { rerender } = render(
       <MemoryRouter>
-        <MobileMenu open={false} onClose={() => {}} links={LINKS} />
+        <MobileMenu open={false} onClose={() => {}} links={LINKS} triggerRef={createRef()} />
       </MemoryRouter>
     );
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
 
     rerender(
       <MemoryRouter>
-        <MobileMenu open onClose={() => {}} links={LINKS} />
+        <MobileMenu open onClose={() => {}} links={LINKS} triggerRef={createRef()} />
       </MemoryRouter>
     );
     expect(screen.getByRole('dialog')).toBeInTheDocument();
@@ -959,19 +967,50 @@ describe('MobileMenu', () => {
     const onClose = vi.fn();
     render(
       <MemoryRouter>
-        <MobileMenu open onClose={onClose} links={LINKS} />
+        <MobileMenu open onClose={onClose} links={LINKS} triggerRef={createRef()} />
       </MemoryRouter>
     );
     await userEvent.keyboard('{Escape}');
     expect(onClose).toHaveBeenCalled();
   });
 
-  it('shows a Publications accordion under Research', () => {
-    render(
+  it('restores focus to the trigger element when closed', () => {
+    const trigger = document.createElement('button');
+    document.body.appendChild(trigger);
+    const triggerRef = { current: trigger };
+    const onClose = vi.fn();
+
+    const { rerender } = render(
       <MemoryRouter>
-        <MobileMenu open onClose={() => {}} links={[{ to: '/research', label: 'Research' }]} />
+        <MobileMenu open onClose={onClose} links={LINKS} triggerRef={triggerRef} />
       </MemoryRouter>
     );
+
+    rerender(
+      <MemoryRouter>
+        <MobileMenu open={false} onClose={onClose} links={LINKS} triggerRef={triggerRef} />
+      </MemoryRouter>
+    );
+
+    expect(document.activeElement).toBe(trigger);
+    document.body.removeChild(trigger);
+  });
+
+  it('Research/Publications is a real collapsible accordion, closed by default', async () => {
+    const user = userEvent.setup();
+    render(
+      <MemoryRouter>
+        <MobileMenu open onClose={() => {}} links={[{ to: '/research', label: 'Research' }]} triggerRef={createRef()} />
+      </MemoryRouter>
+    );
+
+    const toggle = screen.getByRole('button', { name: 'Research' });
+    expect(toggle).toHaveAttribute('aria-expanded', 'false');
+    expect(screen.queryByRole('link', { name: /publications/i })).not.toBeInTheDocument();
+
+    await user.click(toggle);
+
+    expect(toggle).toHaveAttribute('aria-expanded', 'true');
     expect(screen.getByRole('link', { name: /publications/i })).toHaveAttribute('href', '/research/publications');
   });
 });
@@ -985,17 +1024,39 @@ Expected: FAIL — `MobileMenu` doesn't exist.
 - [ ] **Step 9: Implement `MobileMenu.tsx`**
 
 ```tsx
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState, type RefObject } from 'react';
 import { NavLink } from 'react-router-dom';
 
 type Link = { to: string; label: string };
 
-export function MobileMenu({ open, onClose, links }: { open: boolean; onClose: () => void; links: Link[] }) {
+export function MobileMenu({
+  open,
+  onClose,
+  links,
+  triggerRef,
+}: {
+  open: boolean;
+  onClose: () => void;
+  links: Link[];
+  triggerRef: RefObject<HTMLButtonElement | null>;
+}) {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const [researchExpanded, setResearchExpanded] = useState(false);
+  const wasOpen = useRef(false);
+
+  useEffect(() => {
+    if (open) {
+      wasOpen.current = true;
+      closeButtonRef.current?.focus();
+    } else if (wasOpen.current) {
+      wasOpen.current = false;
+      setResearchExpanded(false);
+      triggerRef.current?.focus();
+    }
+  }, [open, triggerRef]);
 
   useEffect(() => {
     if (!open) return;
-    closeButtonRef.current?.focus();
     function handleKey(e: KeyboardEvent) {
       if (e.key === 'Escape') onClose();
     }
@@ -1013,12 +1074,23 @@ export function MobileMenu({ open, onClose, links }: { open: boolean; onClose: (
       {links.map((link) =>
         link.label === 'Research' ? (
           <div key={link.to} className="flex flex-col gap-2">
-            <NavLink to={link.to} onClick={onClose}>
-              {link.label}
-            </NavLink>
-            <NavLink to={`${link.to}/publications`} onClick={onClose} className="pl-4 text-muted-light dark:text-muted-dark">
-              Publications
-            </NavLink>
+            <div className="flex items-center justify-between">
+              <NavLink to={link.to} onClick={onClose}>
+                {link.label}
+              </NavLink>
+              <button
+                aria-expanded={researchExpanded}
+                aria-label="Research"
+                onClick={() => setResearchExpanded((v) => !v)}
+              >
+                {researchExpanded ? '▲' : '▼'}
+              </button>
+            </div>
+            {researchExpanded && (
+              <NavLink to={`${link.to}/publications`} onClick={onClose} className="pl-4 text-muted-light dark:text-muted-dark">
+                Publications
+              </NavLink>
+            )}
           </div>
         ) : (
           <NavLink key={link.to} to={link.to} onClick={onClose}>
@@ -1030,6 +1102,8 @@ export function MobileMenu({ open, onClose, links }: { open: boolean; onClose: (
   );
 }
 ```
+
+Note: the visible "Research" text is on the `NavLink` (role `link`, still navigates directly to `/research`), and the disclosure toggle is a separate `<button aria-label="Research">` (role `button`) with only a decorative arrow glyph as visible content. `screen.getByRole('button', { name: 'Research' })` in the test matches the button by role + accessible name, and does not collide with the link of the same accessible name since roles differ.
 
 - [ ] **Step 10: Run test to verify it passes**
 
