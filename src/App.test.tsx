@@ -10,6 +10,6 @@ describe('App', () => {
         <App />
       </ThemeProvider>
     );
-    expect(screen.getByRole('heading', { name: 'Home' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Ketan Vasudeva' })).toBeInTheDocument();
   });
 });

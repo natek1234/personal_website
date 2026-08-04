@@ -25,7 +25,7 @@ export function Home() {
         </p>
         <Link
           to="/projects"
-          className="mx-auto mt-4 rounded-md bg-accent-light px-6 py-3 font-body text-sm font-medium text-base-light dark:bg-accent-dark"
+          className="mx-auto mt-4 rounded-md bg-accent-light px-6 py-3 font-body text-sm font-medium text-ink-light dark:bg-accent-dark"
         >
           See my work
         </Link>
