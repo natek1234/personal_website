@@ -1,5 +1,7 @@
 export type DateRange = { start: string; end?: string };
 
+export type Bullet = string | { text: string; url: string };
+
 export type Project = {
   id: string;
   title: string;
@@ -11,9 +13,10 @@ export type Project = {
   links?: { label: string; url: string }[];
   image?: string;
   featured?: boolean;
+  bullets?: Bullet[];
 };
 
-export type CVCategory = 'education' | 'research' | 'publications' | 'talks' | 'grants' | 'service';
+export type CVCategory = 'education' | 'work' | 'research' | 'publications' | 'talks' | 'awards' | 'grants' | 'service';
 
 export type CVEntry = {
   id: string;
@@ -22,6 +25,7 @@ export type CVEntry = {
   org?: string;
   dateRange: DateRange;
   description?: string;
+  bullets?: Bullet[];
 };
 
 export type Publication = {
@@ -31,6 +35,7 @@ export type Publication = {
   venue: string;
   year: number;
   type: 'journal' | 'conference' | 'whitepaper';
+  description?: string;
   links?: { label: string; url: string }[];
 };
 

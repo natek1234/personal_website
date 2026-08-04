@@ -18,6 +18,7 @@ describe('Nav', () => {
   it('renders links to every top-level page', () => {
     renderNav('/');
     for (const [name, href] of [
+      ['Home', '/'],
       ['About', '/about'],
       ['Research', '/research'],
       ['Projects', '/projects'],
@@ -32,6 +33,12 @@ describe('Nav', () => {
   it('marks the current route with aria-current', () => {
     renderNav('/research');
     expect(screen.getByRole('link', { name: 'Research' })).toHaveAttribute('aria-current', 'page');
+  });
+
+  it('only marks Home as current on the root path, not on every route', () => {
+    renderNav('/about');
+    expect(screen.getByRole('link', { name: 'Home' })).not.toHaveAttribute('aria-current');
+    expect(screen.getByRole('link', { name: 'About' })).toHaveAttribute('aria-current', 'page');
   });
 
   it('toggles the theme when the theme button is clicked', () => {

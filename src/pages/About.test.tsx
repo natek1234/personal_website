@@ -14,4 +14,13 @@ describe('About', () => {
     expect(screen.getByText(/TypeScript/)).toBeInTheDocument();
     expect(screen.queryByRole('list', { name: /skills/i })).not.toBeInTheDocument();
   });
+
+  it('renders a headshot image', () => {
+    render(
+      <HelmetProvider>
+        <About />
+      </HelmetProvider>
+    );
+    expect(screen.getByRole('img', { name: 'Ketan Vasudeva' })).toHaveAttribute('src', '/images/headshot.jpg');
+  });
 });

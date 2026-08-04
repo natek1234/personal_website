@@ -9,11 +9,16 @@ export function About() {
         path="/about"
       />
       <article className="mx-auto max-w-2xl px-4 py-16 font-body leading-relaxed">
-        <h1 className="mb-6 font-display text-4xl">About</h1>
+        <h1 className="mb-8 text-center font-display text-4xl">About</h1>
+        <img
+          src="/images/headshot.jpg"
+          alt="Ketan Vasudeva"
+          className="float-left mb-4 mr-6 h-40 w-40 shrink-0 rounded-lg object-cover shadow-md"
+        />
         <p className="mb-4">
-          I'm an aerospace engineering PhD candidate at the University of Arizona, working under Prof. Jekan Thanga
-          on lunar surface construction, regolith containment systems, and autonomous space robotics. My research
-          sits at the intersection of mechanical design, robotics, and mission concept development.
+          I'm an aerospace engineering PhD candidate at the University of Arizona's SpaceTREx Laboratory, working on
+          lunar surface construction, regolith containment systems, and autonomous space robotics. My research sits
+          at the intersection of mechanical design, robotics, and mission concept development.
         </p>
         <p className="mb-4">
           Outside the lab, I build things end to end — writing production TypeScript and Python, standing up
@@ -24,6 +29,7 @@ export function About() {
           That mix — formal research training plus a builder's instinct for shipping working software — is what
           this site is meant to show: not just what I've studied, but what I've made.
         </p>
+        <div className="clear-both" />
       </article>
     </>
   );

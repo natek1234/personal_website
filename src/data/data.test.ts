@@ -24,7 +24,7 @@ describe('content data integrity', () => {
 
   it('has unique cv entry ids and only known categories', () => {
     expect(idsAreUnique(cvEntries)).toBe(true);
-    const known = ['education', 'research', 'publications', 'talks', 'grants', 'service'];
+    const known = ['education', 'work', 'research', 'publications', 'talks', 'awards', 'grants', 'service'];
     for (const entry of cvEntries) {
       expect(known).toContain(entry.category);
     }

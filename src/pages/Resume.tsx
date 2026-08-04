@@ -1,6 +1,6 @@
 import { SEO } from '../components/SEO';
 
-const RESUME_PATH = '/resume-placeholder.pdf';
+const RESUME_PATH = '/ketan-vasudeva-resume.pdf';
 
 export function Resume() {
   return (

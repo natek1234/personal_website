@@ -1,6 +1,6 @@
 import type { CVCategory, CVEntry } from '../../types/content';
 
-const CATEGORIES: CVCategory[] = ['education', 'research', 'publications', 'talks', 'grants', 'service'];
+const CATEGORIES: CVCategory[] = ['education', 'work', 'research', 'publications', 'talks', 'awards', 'grants', 'service'];
 
 export function groupByCategory(entries: CVEntry[]): Record<CVCategory, CVEntry[]> {
   const result = Object.fromEntries(CATEGORIES.map((c) => [c, [] as CVEntry[]])) as Record<CVCategory, CVEntry[]>;

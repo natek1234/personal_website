@@ -5,6 +5,7 @@ import { useTheme } from '../../theme/ThemeContext';
 import { MobileMenu } from './MobileMenu';
 
 const LINKS = [
+  { to: '/', label: 'Home', end: true },
   { to: '/about', label: 'About' },
   { to: '/research', label: 'Research' },
   { to: '/projects', label: 'Projects' },
@@ -21,14 +22,15 @@ export function Nav() {
   return (
     <header className="sticky top-0 z-40 border-b border-muted-light/20 bg-base-light/90 backdrop-blur dark:border-muted-dark/20 dark:bg-base-dark/90">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
-        <NavLink to="/" aria-label="Home">
-          <Logo className="[&_svg]:h-8 [&_svg]:w-8 text-ink-light dark:text-ink-dark" />
+        <NavLink to="/" className="shrink-0">
+          <Logo className="[&_svg]:h-12 [&_svg]:w-12 text-ink-light dark:text-ink-dark" />
         </NavLink>
         <nav className="hidden gap-6 font-body text-sm md:flex" aria-label="Primary">
           {LINKS.map((link) => (
             <NavLink
               key={link.to}
               to={link.to}
+              end={link.end}
               className={({ isActive }) => (isActive ? 'text-accent-text-light dark:text-accent-dark' : '')}
             >
               {link.label}

@@ -15,4 +15,35 @@ describe('Projects', () => {
       expect(screen.getByText(project.title)).toBeInTheDocument();
     }
   });
+
+  it('renders the Sound of Space podcast with Spotify + Instagram links (with icons) and the educational-videos bullet', () => {
+    render(
+      <HelmetProvider>
+        <Projects />
+      </HelmetProvider>
+    );
+    const spotifyLink = screen.getByRole('link', { name: 'Spotify' });
+    expect(spotifyLink).toHaveAttribute('href', 'https://open.spotify.com/show/6RQjnfSOOfoKXDSyLCLtYg?si=621c3b4e686c4cdd');
+    expect(spotifyLink.querySelector('svg')).toBeInTheDocument();
+
+    const instagramLink = screen.getByRole('link', { name: 'Instagram' });
+    expect(instagramLink).toHaveAttribute(
+      'href',
+      'https://www.instagram.com/_thesoundofspace?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=='
+    );
+    expect(instagramLink.querySelector('svg')).toBeInTheDocument();
+
+    expect(screen.getByText(/educational space videos/i)).toBeInTheDocument();
+  });
+
+  it('renders the literature-sourcing agent GitHub link with an icon', () => {
+    render(
+      <HelmetProvider>
+        <Projects />
+      </HelmetProvider>
+    );
+    const githubLink = screen.getByRole('link', { name: 'GitHub' });
+    expect(githubLink).toHaveAttribute('href', 'https://github.com/natek1234/literature_scraping_agent');
+    expect(githubLink.querySelector('svg')).toBeInTheDocument();
+  });
 });

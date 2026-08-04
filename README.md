@@ -36,14 +36,25 @@ Static hosting on **Cloudflare Pages**:
 
 - Build command: `npm run build`
 - Output directory: `dist`
+- Node version: pinned via `.nvmrc` (currently 22). Cloudflare Pages reads this
+  automatically; the toolchain (Vite 8, React 19) needs a recent Node, so don't remove it.
 
 No `_redirects` file is needed. Cloudflare Pages serves `dist/index.html` for `/`, the
 prerendered `index.html` inside each route directory for that route, and `404.html`
 automatically for unmatched paths.
 
+**If the build fails at the `postbuild` step:** that's `react-snap` launching a headless
+Chromium via Puppeteer to prerender each route. `package.json`'s `reactSnap.puppeteerArgs`
+already passes `--no-sandbox --disable-setuid-sandbox`, which is the standard fix for
+Chromium's sandbox not having the kernel permissions most CI/build containers grant — but
+this hasn't been verified against an actual Cloudflare Pages build. If it still fails there,
+check the build log for a Puppeteer/Chromium launch error specifically (not a generic build
+failure) and search Cloudflare Pages' docs/community for current Puppeteer guidance, since
+supported flags and workarounds shift over time.
+
 ## Updating the resume PDF
 
-The `/resume` page embeds `public/resume-placeholder.pdf`. To publish the real resume,
-overwrite that file **keeping the same filename** — no code changes are required. The path
-is referenced in one place (`src/pages/Resume.tsx`) and is served straight from `public/`,
-so the swap is a drop-in replacement.
+The `/resume` page embeds `public/ketan-vasudeva-resume.pdf`. To update it, overwrite that
+file **keeping the same filename** — no code changes are required. The path is referenced in
+one place (`src/pages/Resume.tsx`) and is served straight from `public/`, so the swap is a
+drop-in replacement.

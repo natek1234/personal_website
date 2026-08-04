@@ -57,21 +57,13 @@ describe('MobileMenu', () => {
     document.body.removeChild(trigger);
   });
 
-  it('Research/Publications is a real collapsible accordion, closed by default', async () => {
-    const user = userEvent.setup();
+  it('renders every link passed in, including Research, as a plain link', () => {
     render(
       <MemoryRouter>
         <MobileMenu open onClose={() => {}} links={[{ to: '/research', label: 'Research' }]} triggerRef={createRef()} />
       </MemoryRouter>
     );
 
-    const toggle = screen.getByRole('button', { name: 'Research' });
-    expect(toggle).toHaveAttribute('aria-expanded', 'false');
-    expect(screen.queryByRole('link', { name: /publications/i })).not.toBeInTheDocument();
-
-    await user.click(toggle);
-
-    expect(toggle).toHaveAttribute('aria-expanded', 'true');
-    expect(screen.getByRole('link', { name: /publications/i })).toHaveAttribute('href', '/research/publications');
+    expect(screen.getByRole('link', { name: 'Research' })).toHaveAttribute('href', '/research');
   });
 });

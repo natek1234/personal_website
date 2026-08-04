@@ -14,6 +14,46 @@ describe('Timeline (flat mode)', () => {
     const headings = screen.getAllByRole('heading', { level: 3 }).map((h) => h.textContent);
     expect(headings).toEqual(['Newer', 'Older']);
   });
+
+  it('renders a project role when present', () => {
+    const withRole: Project[] = [
+      { id: 'p3', title: 'Led Project', dateRange: { start: '2022' }, summary: 's3', tags: [], role: 'Team Lead' },
+    ];
+    render(<Timeline mode="flat" items={withRole} />);
+    expect(screen.getByText('Team Lead')).toBeInTheDocument();
+  });
+
+  it('renders project links when present', () => {
+    const withLinks: Project[] = [
+      {
+        id: 'p4',
+        title: 'Open Source Project',
+        dateRange: { start: '2024' },
+        summary: 's4',
+        tags: [],
+        links: [{ label: 'GitHub', url: 'https://github.com/example/repo' }],
+      },
+    ];
+    render(<Timeline mode="flat" items={withLinks} />);
+    const link = screen.getByRole('link', { name: 'GitHub' });
+    expect(link).toHaveAttribute('href', 'https://github.com/example/repo');
+    expect(link.querySelector('svg')).toBeInTheDocument();
+  });
+
+  it('renders bullets on a project when present', () => {
+    const withBullets: Project[] = [
+      {
+        id: 'p5',
+        title: 'Podcast',
+        dateRange: { start: '2021' },
+        summary: 's5',
+        tags: [],
+        bullets: ['Produced educational videos'],
+      },
+    ];
+    render(<Timeline mode="flat" items={withBullets} />);
+    expect(screen.getByText('Produced educational videos')).toBeInTheDocument();
+  });
 });
 
 const cvEntries: CVEntry[] = [
@@ -66,5 +106,22 @@ describe('Timeline (grouped mode)', () => {
     render(<Timeline mode="grouped" items={cvEntries} />);
     expect(screen.getByText('Robotics Lab')).toBeInTheDocument();
     expect(screen.getByText('Led a team building autonomous manipulators.')).toBeInTheDocument();
+  });
+
+  it('renders bullets as separate list items, with plain-text and hyperlinked bullets both supported', () => {
+    const withBullets: CVEntry[] = [
+      {
+        id: 'e2',
+        category: 'education',
+        title: 'BSc in Engineering',
+        dateRange: { start: '2015', end: '2019' },
+        bullets: ['Dean\'s List', { text: 'Member of the Robotics Lab', url: 'https://example.com/lab' }],
+      },
+    ];
+    render(<Timeline mode="grouped" items={withBullets} />);
+    expect(screen.getByText("Dean's List").tagName).toBe('LI');
+    const labLink = screen.getByRole('link', { name: 'Member of the Robotics Lab' });
+    expect(labLink).toHaveAttribute('href', 'https://example.com/lab');
+    expect(labLink.closest('li')).toBeInTheDocument();
   });
 });

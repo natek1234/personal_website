@@ -4,7 +4,6 @@ const ROUTES = [
   { path: 'dist/index.html', title: 'Home | Ketan Vasudeva' },
   { path: 'dist/about/index.html', title: 'About | Ketan Vasudeva' },
   { path: 'dist/research/index.html', title: 'Research | Ketan Vasudeva' },
-  { path: 'dist/research/publications/index.html', title: 'Publications & Writing | Ketan Vasudeva' },
   { path: 'dist/projects/index.html', title: 'Projects | Ketan Vasudeva' },
   { path: 'dist/resume/index.html', title: 'Resume | Ketan Vasudeva' },
   { path: 'dist/cv/index.html', title: 'CV | Ketan Vasudeva' },
