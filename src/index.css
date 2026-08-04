@@ -1,6 +1,34 @@
-:root {
-  font-family: system-ui, sans-serif;
-  color-scheme: light dark;
+@import 'tailwindcss';
+@import '@fontsource/fraunces/400.css';
+@import '@fontsource/fraunces/600.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+
+/* Attribute-based dark mode (not prefers-color-scheme) — ThemeContext (Task 3) sets data-theme on <html> */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@theme {
+  --color-base-light: #FAF6EF;
+  --color-ink-light: #211D1D;
+  --color-muted-light: #6B6357;
+  --color-accent-light: #E4572E;
+
+  --color-base-dark: #1B1815;
+  --color-ink-dark: #F2ECE3;
+  --color-muted-dark: #B8AE9E;
+  --color-accent-dark: #FF7A54;
+
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+html {
+  background-color: var(--color-base-light);
+  color: var(--color-ink-light);
+}
+html[data-theme='dark'] {
+  background-color: var(--color-base-dark);
+  color: var(--color-ink-dark);
 }
 
 body {
