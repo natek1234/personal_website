@@ -25,3 +25,6 @@ yarn-error.log*
 
 # brainstorming companion scratch files
 .superpowers/
+
+# intermediate build-time asset extraction
+scripts/.tmp/
