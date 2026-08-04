@@ -1,14 +1,36 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState, type RefObject } from 'react';
 import { NavLink } from 'react-router-dom';
 
 type Link = { to: string; label: string };
 
-export function MobileMenu({ open, onClose, links }: { open: boolean; onClose: () => void; links: Link[] }) {
+export function MobileMenu({
+  open,
+  onClose,
+  links,
+  triggerRef,
+}: {
+  open: boolean;
+  onClose: () => void;
+  links: Link[];
+  triggerRef: RefObject<HTMLButtonElement | null>;
+}) {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const [researchExpanded, setResearchExpanded] = useState(false);
+  const wasOpen = useRef(false);
+
+  useEffect(() => {
+    if (open) {
+      wasOpen.current = true;
+      closeButtonRef.current?.focus();
+    } else if (wasOpen.current) {
+      wasOpen.current = false;
+      setResearchExpanded(false);
+      triggerRef.current?.focus();
+    }
+  }, [open, triggerRef]);
 
   useEffect(() => {
     if (!open) return;
-    closeButtonRef.current?.focus();
     function handleKey(e: KeyboardEvent) {
       if (e.key === 'Escape') onClose();
     }
@@ -26,12 +48,23 @@ export function MobileMenu({ open, onClose, links }: { open: boolean; onClose: (
       {links.map((link) =>
         link.label === 'Research' ? (
           <div key={link.to} className="flex flex-col gap-2">
-            <NavLink to={link.to} onClick={onClose}>
-              {link.label}
-            </NavLink>
-            <NavLink to={`${link.to}/publications`} onClick={onClose} className="pl-4 text-muted-light dark:text-muted-dark">
-              Publications
-            </NavLink>
+            <div className="flex items-center justify-between">
+              <NavLink to={link.to} onClick={onClose}>
+                {link.label}
+              </NavLink>
+              <button
+                aria-expanded={researchExpanded}
+                aria-label="Research"
+                onClick={() => setResearchExpanded((v) => !v)}
+              >
+                {researchExpanded ? '▲' : '▼'}
+              </button>
+            </div>
+            {researchExpanded && (
+              <NavLink to={`${link.to}/publications`} onClick={onClose} className="pl-4 text-muted-light dark:text-muted-dark">
+                Publications
+              </NavLink>
+            )}
           </div>
         ) : (
           <NavLink key={link.to} to={link.to} onClick={onClose}>

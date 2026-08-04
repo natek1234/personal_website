@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Logo } from '../Logo';
 import { useTheme } from '../../theme/ThemeContext';
 import { MobileMenu } from './MobileMenu';
@@ -16,6 +16,7 @@ const LINKS = [
 export function Nav() {
   const { theme, toggleTheme } = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
 
   return (
     <header className="sticky top-0 z-40 border-b border-muted-light/20 bg-base-light/90 backdrop-blur dark:bg-base-dark/90">
@@ -38,12 +39,18 @@ export function Nav() {
           <button onClick={toggleTheme} aria-label={`Toggle theme, currently ${theme}`}>
             {theme === 'light' ? '🌙' : '☀️'}
           </button>
-          <button className="md:hidden" aria-label="Open menu" aria-expanded={mobileOpen} onClick={() => setMobileOpen(true)}>
+          <button
+            ref={hamburgerRef}
+            className="md:hidden"
+            aria-label="Open menu"
+            aria-expanded={mobileOpen}
+            onClick={() => setMobileOpen(true)}
+          >
             ☰
           </button>
         </div>
       </div>
-      <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} links={LINKS} />
+      <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} links={LINKS} triggerRef={hamburgerRef} />
     </header>
   );
 }
