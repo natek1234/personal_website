@@ -27,6 +27,7 @@
 ## Task 1: Project scaffold + test harness
 
 **Files:**
+- Delete: `package.json`, `package-lock.json`, `src/`, `public/` (old Create React App project — this repo is a from-scratch rebuild; nothing here carries forward as code)
 - Create: `package.json`, `vite.config.ts`, `tsconfig.json`, `tsconfig.node.json`, `index.html`
 - Create: `src/main.tsx`, `src/App.tsx`, `src/App.test.tsx`, `src/test/setup.ts`
 - Create: `.gitignore` (append `dist`, `.superpowers` already present)
@@ -34,26 +35,35 @@
 **Interfaces:**
 - Produces: `<App />` root component later tasks wrap with providers/router.
 
-- [ ] **Step 1: Scaffold the Vite React-TS project**
+- [ ] **Step 1: Remove the old CRA project before scaffolding**
+
+The repo currently contains an old Create React App site (`package.json`, `package-lock.json`, `src/`, `public/`). This is a clean rebuild — none of that code carries forward. Content and image assets from it are pulled from git history in later tasks (e.g. Task 5's logo), not from these files directly, so it's safe to delete outright. Do NOT delete `.git`, `.gitignore`, `LICENSE`, `README.md`, or `docs/`.
+
+```bash
+git rm -r --quiet package.json package-lock.json src public
+git commit -m "chore: remove old Create React App project (clean rebuild)"
+```
+
+- [ ] **Step 2: Scaffold the Vite React-TS project**
 
 ```bash
 npm create vite@latest . -- --template react-ts
 npm install
 ```
 
-- [ ] **Step 2: Install core runtime dependencies**
+- [ ] **Step 3: Install core runtime dependencies**
 
 ```bash
 npm install react-router-dom framer-motion react-helmet-async @fontsource/fraunces @fontsource/inter
 ```
 
-- [ ] **Step 3: Install dev/test dependencies**
+- [ ] **Step 4: Install dev/test dependencies**
 
 ```bash
 npm install -D vitest @testing-library/react @testing-library/jest-dom @testing-library/user-event jsdom tailwindcss postcss autoprefixer pdf-lib potrace react-snap
 ```
 
-- [ ] **Step 4: Configure Vitest inside `vite.config.ts`**
+- [ ] **Step 5: Configure Vitest inside `vite.config.ts`**
 
 ```ts
 /// <reference types="vitest/config" />
@@ -70,14 +80,14 @@ export default defineConfig({
 });
 ```
 
-- [ ] **Step 5: Create test setup file**
+- [ ] **Step 6: Create test setup file**
 
 `src/test/setup.ts`:
 ```ts
 import '@testing-library/jest-dom/vitest';
 ```
 
-- [ ] **Step 6: Write the failing smoke test**
+- [ ] **Step 7: Write the failing smoke test**
 
 `src/App.test.tsx`:
 ```tsx
@@ -93,12 +103,12 @@ describe('App', () => {
 });
 ```
 
-- [ ] **Step 7: Run test to verify it fails**
+- [ ] **Step 8: Run test to verify it fails**
 
 Run: `npx vitest run`
 Expected: FAIL — `App` doesn't render "Ketan Vasudeva" yet (default Vite template content).
 
-- [ ] **Step 8: Implement minimal `App.tsx`**
+- [ ] **Step 9: Implement minimal `App.tsx`**
 
 ```tsx
 function App() {
@@ -108,12 +118,12 @@ function App() {
 export default App;
 ```
 
-- [ ] **Step 9: Run test to verify it passes**
+- [ ] **Step 10: Run test to verify it passes**
 
 Run: `npx vitest run`
 Expected: PASS
 
-- [ ] **Step 10: Add npm scripts to `package.json`**
+- [ ] **Step 11: Add npm scripts to `package.json`**
 
 ```json
 {
@@ -127,7 +137,7 @@ Expected: PASS
 }
 ```
 
-- [ ] **Step 11: Commit**
+- [ ] **Step 12: Commit**
 
 ```bash
 git add -A
@@ -642,7 +652,16 @@ git commit -m "feat: add typed content data files (projects, publications, cv, c
 **Interfaces:**
 - Produces: `Logo` component (`<Logo className?: string />`) — consumed by `Nav` (Task 6).
 
-- [ ] **Step 1: Write the vectorization script**
+- [ ] **Step 1: Pull the source logo PNG from git history**
+
+The old CRA project's files were removed from the working tree in Task 1, but the `master` branch (this repo's original history, untouched by this rebuild) still has the original asset. Pull it out via git rather than assuming a sibling directory on disk:
+
+```bash
+mkdir -p scripts/.tmp
+git show master:public/images/Ketan_black_logo.png > scripts/.tmp/logo-source.png
+```
+
+- [ ] **Step 2: Write the vectorization script**
 
 `scripts/vectorize-logo.mjs`:
 ```js
@@ -650,10 +669,7 @@ import { trace } from 'potrace';
 import { writeFileSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-const SOURCE = resolve(
-  process.env.OLD_REPO_PATH ?? '../personal_website_old',
-  'public/images/Ketan_black_logo.png'
-);
+const SOURCE = resolve('scripts/.tmp/logo-source.png');
 const OUT = resolve('src/assets/logo.svg');
 
 readFileSync(SOURCE); // fail fast with a clear error if the source asset is missing
@@ -665,18 +681,12 @@ trace(SOURCE, { threshold: 128 }, (err, svg) => {
 });
 ```
 
-Note: run this once, by hand, pointing `OLD_REPO_PATH` at wherever the old repo's `public/images/Ketan_black_logo.png` lives on disk:
+- [ ] **Step 3: Run the script and verify output**
 
-```bash
-OLD_REPO_PATH="../old-portfolio" node scripts/vectorize-logo.mjs
-```
-
-- [ ] **Step 2: Run the script and verify output**
-
-Run: `OLD_REPO_PATH="<path-to-old-repo>" node scripts/vectorize-logo.mjs`
+Run: `node scripts/vectorize-logo.mjs`
 Expected: `src/assets/logo.svg` created, containing `<svg` and at least one `<path`.
 
-- [ ] **Step 3: Write the failing component test**
+- [ ] **Step 4: Write the failing component test**
 
 `src/components/Logo.test.tsx`:
 ```tsx
@@ -692,12 +702,12 @@ describe('Logo', () => {
 });
 ```
 
-- [ ] **Step 4: Run test to verify it fails**
+- [ ] **Step 5: Run test to verify it fails**
 
 Run: `npx vitest run src/components/Logo.test.tsx`
 Expected: FAIL — `Logo` component doesn't exist.
 
-- [ ] **Step 5: Implement `Logo.tsx`**
+- [ ] **Step 6: Implement `Logo.tsx`**
 
 Import the generated SVG as a raw string via Vite's `?raw` suffix, strip its hardcoded fill so it inherits `currentColor` (themes automatically with light/dark text color), and wrap it with an accessible role.
 
@@ -713,12 +723,14 @@ export function Logo({ className }: { className?: string }) {
 }
 ```
 
-- [ ] **Step 6: Run test to verify it passes**
+- [ ] **Step 7: Run test to verify it passes**
 
 Run: `npx vitest run src/components/Logo.test.tsx`
 Expected: PASS
 
-- [ ] **Step 7: Commit**
+- [ ] **Step 8: Add the temp source PNG to `.gitignore` and commit**
+
+The intermediate `scripts/.tmp/logo-source.png` is a build-time extraction artifact, not a source file — ignore it, don't commit it. Append `scripts/.tmp/` to `.gitignore`.
 
 ```bash
 git add -A
