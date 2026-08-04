@@ -1609,7 +1609,7 @@ export function Home() {
         </p>
         <Link
           to="/projects"
-          className="mx-auto mt-4 rounded-md bg-accent-light px-6 py-3 font-body text-sm font-medium text-base-light dark:bg-accent-dark"
+          className="mx-auto mt-4 rounded-md bg-accent-light px-6 py-3 font-body text-sm font-medium text-ink-light dark:bg-accent-dark"
         >
           See my work
         </Link>
@@ -2135,7 +2135,7 @@ export function Resume() {
           <a
             href={RESUME_PATH}
             download
-            className="rounded-md bg-accent-light px-4 py-2 font-body text-sm font-medium text-base-light dark:bg-accent-dark"
+            className="rounded-md bg-accent-light px-4 py-2 font-body text-sm font-medium text-ink-light dark:bg-accent-dark"
           >
             Download PDF
           </a>
