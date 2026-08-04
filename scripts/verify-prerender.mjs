@@ -11,6 +11,9 @@ const ROUTES = [
   { path: 'dist/contact/index.html', title: 'Contact | Ketan Vasudeva' },
 ];
 
+// Matches a zero opacity in a serialized inline style, but not 0.5 / 0.25 etc.
+const HIDDEN_OPACITY = /opacity\s*:\s*0(?![.\d%])/g;
+
 let failed = false;
 for (const route of ROUTES) {
   if (!existsSync(route.path)) {
@@ -27,10 +30,20 @@ for (const route of ROUTES) {
     console.error(`MISSING OG TITLE: ${route.path}`);
     failed = true;
   }
+  // Scroll-triggered entrance animations must not serialize their pre-animation hidden
+  // state into the static HTML — content below the fold at crawl time would otherwise ship
+  // invisible to users and crawlers until JS hydrates. See TimelineEntry's isPrerendering.
+  const hidden = html.match(HIDDEN_OPACITY);
+  if (hidden) {
+    console.error(`HIDDEN CONTENT: ${route.path} has ${hidden.length} element(s) prerendered at opacity:0`);
+    failed = true;
+  }
 }
 
 if (failed) {
   console.error('Prerender verification FAILED');
   process.exit(1);
 }
-console.log('Prerender verification PASSED — all 8 routes have correct title + og:title');
+console.log(
+  `Prerender verification PASSED — all ${ROUTES.length} routes have correct title + og:title and no opacity:0 content`
+);

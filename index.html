@@ -2,6 +2,29 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!--
+      Blocking, synchronous theme bootstrap. MUST stay first in <head>, before any
+      stylesheet or app script, so it runs before first paint.
+
+      Prerendered HTML (react-snap) ships with whatever data-theme Puppeteer resolved at
+      crawl time, and ThemeContext only corrects it in a useEffect — i.e. after first
+      paint — so without this a dark-preferring visitor sees a full light-theme render
+      snap to dark on every cold load.
+
+      This mirrors getInitialTheme() in src/theme/ThemeContext.tsx. Keep the two in sync.
+    -->
+    <script>
+      (function () {
+        var stored = localStorage.getItem('theme');
+        var theme =
+          stored === 'light' || stored === 'dark'
+            ? stored
+            : window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
