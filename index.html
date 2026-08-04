@@ -6,8 +6,8 @@
       Blocking, synchronous theme bootstrap. MUST stay first in <head>, before any
       stylesheet or app script, so it runs before first paint.
 
-      Prerendered HTML (react-snap) ships with whatever data-theme Puppeteer resolved at
-      crawl time, and ThemeContext only corrects it in a useEffect — i.e. after first
+      Prerendered HTML (scripts/prerender.mjs) ships with a fixed default theme baked in
+      at build time, and ThemeContext only corrects it in a useEffect — i.e. after first
       paint — so without this a dark-preferring visitor sees a full light-theme render
       snap to dark on every cold load.
 

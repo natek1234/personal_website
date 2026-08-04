@@ -2,12 +2,13 @@ import { motion } from 'framer-motion';
 import type { Bullet } from '../../types/content';
 import { LinkIcon } from '../icons/LinkIcon';
 
-// react-snap crawls the built app with Puppeteer under a "ReactSnap" user-agent and
-// serializes the resulting DOM. Entries below the fold never scroll into view during
-// that crawl, so their pre-animation `opacity: 0` would be baked into the static HTML
-// that ships to users and crawlers before any JS runs. Skip the hidden initial state
-// during prerendering so the shipped HTML is fully visible.
-const isPrerendering = typeof navigator !== 'undefined' && /ReactSnap/i.test(navigator.userAgent);
+// scripts/prerender.mjs renders this component tree server-side in plain Node (no browser,
+// no `window`), where entries below the fold never get a chance to scroll into view — so
+// their pre-animation `opacity: 0` would otherwise be baked into the static HTML that ships
+// to users and crawlers before any JS runs. Skip the hidden initial state during SSR so the
+// shipped HTML is fully visible; real browsers (where `window` exists, including once the
+// client hydrates) get the normal scroll-triggered entrance animation.
+const isPrerendering = typeof window === 'undefined';
 
 export function TimelineEntry({
   title,
