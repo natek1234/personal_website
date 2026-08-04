@@ -19,7 +19,7 @@ export function Nav() {
   const hamburgerRef = useRef<HTMLButtonElement>(null);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-muted-light/20 bg-base-light/90 backdrop-blur dark:bg-base-dark/90">
+    <header className="sticky top-0 z-40 border-b border-muted-light/20 bg-base-light/90 backdrop-blur dark:border-muted-dark/20 dark:bg-base-dark/90">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
         <NavLink to="/" aria-label="Home">
           <Logo className="[&_svg]:h-8 [&_svg]:w-8 text-ink-light dark:text-ink-dark" />
@@ -29,7 +29,7 @@ export function Nav() {
             <NavLink
               key={link.to}
               to={link.to}
-              className={({ isActive }) => (isActive ? 'text-accent-light dark:text-accent-dark' : '')}
+              className={({ isActive }) => (isActive ? 'text-accent-text-light dark:text-accent-dark' : '')}
             >
               {link.label}
             </NavLink>

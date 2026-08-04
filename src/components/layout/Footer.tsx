@@ -6,7 +6,7 @@ export function Footer() {
       <ul className="flex flex-wrap gap-4">
         {contactLinks.map((link) => (
           <li key={link.id}>
-            <a href={link.href} aria-label={link.label}>
+            <a href={link.href}>
               {link.label}
             </a>
           </li>

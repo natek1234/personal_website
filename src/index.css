@@ -12,6 +12,10 @@
   --color-ink-light: #211D1D;
   --color-muted-light: #6B6357;
   --color-accent-light: #E4572E;
+  /* Accent-as-text in light mode: #E4572E is only 3.42:1 on #FAF6EF (fails WCAG AA
+     for normal text). This darker same-hue coral is 5.05:1. Use `text-accent-text-light`
+     wherever accent is a text color; keep `accent-light` for backgrounds/borders/CTAs. */
+  --color-accent-text-light: #B8431F;
 
   --color-base-dark: #1B1815;
   --color-ink-dark: #F2ECE3;

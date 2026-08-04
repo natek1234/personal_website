@@ -17,7 +17,7 @@ export function Resume() {
             Download PDF
           </a>
         </div>
-        <object data={RESUME_PATH} type="application/pdf" title="Resume PDF" className="h-[80vh] w-full rounded-md border border-muted-light/20">
+        <object data={RESUME_PATH} type="application/pdf" title="Resume PDF" className="h-[80vh] w-full rounded-md border border-muted-light/20 dark:border-muted-dark/20">
           <p>
             Your browser can't display the embedded PDF. <a href={RESUME_PATH}>Open it directly</a>.
           </p>

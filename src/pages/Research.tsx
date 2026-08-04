@@ -26,7 +26,7 @@ export function Research() {
           ahead of larger-scale infrastructure deployment.
         </p>
         <p className="mt-8">
-          <Link to="/research/publications" className="text-accent-light underline dark:text-accent-dark">
+          <Link to="/research/publications" className="text-accent-text-light underline dark:text-accent-dark">
             Read the publications & writing →
           </Link>
         </p>

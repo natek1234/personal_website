@@ -35,7 +35,7 @@ export function Home() {
           <Link
             key={tile.to}
             to={tile.to}
-            className="rounded-lg border border-muted-light/20 p-6 transition hover:border-accent-light dark:hover:border-accent-dark"
+            className="rounded-lg border border-muted-light/20 p-6 transition hover:border-accent-light dark:border-muted-dark/20 dark:hover:border-accent-dark"
           >
             <h2 className="font-display text-xl">{tile.label}</h2>
             <p className="mt-2 text-sm text-muted-light dark:text-muted-dark">{tile.blurb}</p>
