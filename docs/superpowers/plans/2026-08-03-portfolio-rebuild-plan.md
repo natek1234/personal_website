@@ -6,7 +6,7 @@
 
 **Architecture:** Vite + React + TypeScript SPA with React Router for real per-page routes, prerendered to static HTML at build time (react-snap) for correct SEO/OG tags, deployed to Cloudflare Pages. Content (projects, publications, CV entries, contact links) lives in typed data files under `src/data/`, rendered through a shared `Timeline` component — adding an entry later means editing a data file, not markup.
 
-**Tech Stack:** React 18, TypeScript, Vite, Tailwind CSS, React Router v6, Framer Motion, react-helmet-async, react-snap, Vitest + React Testing Library, pdf-lib (placeholder resume generation), potrace (logo vectorization), @fontsource/fraunces + @fontsource/inter.
+**Tech Stack:** React 19, TypeScript, Vite, Tailwind CSS, React Router v7, Framer Motion, react-helmet-async, react-snap, Vitest + React Testing Library, pdf-lib (placeholder resume generation), potrace (logo vectorization), @fontsource/fraunces + @fontsource/inter. (Updated from an initial React 18/Router v6 assumption after Task 1: the plan never pinned versions, npm resolved current majors, and the human partner confirmed targeting React 19/Router v7 rather than pinning down.)
 
 ## Global Constraints
 
