@@ -148,14 +148,16 @@ git commit -m "chore: scaffold Vite+React+TS project with Vitest harness"
 
 ## Task 2: Design tokens + Tailwind theme
 
+**Note on Tailwind version:** Task 1 installed `tailwindcss@4.x` (npm resolved current; nothing was pinned). Tailwind v4 is CSS-first — there is no `tailwind.config.ts` or `postcss.config.js` by default, and theme values are declared inside an `@theme` block in CSS rather than a JS config object. The steps below target v4's actual API, not v3's.
+
 **Files:**
-- Create: `src/theme/tokens.ts`, `src/theme/tokens.test.ts`
-- Create: `tailwind.config.ts`, `postcss.config.js`
-- Modify: `src/index.css` (Tailwind directives + font imports)
+- Create: `src/theme/tokens.ts`, `src/theme/tokens.test.ts` (the source-of-truth values, locked in by a test — Tailwind's CSS `@theme` block below must be kept in sync with these by hand, since v4 can't import a `.ts` file into CSS)
+- Modify: `vite.config.ts` (add the `@tailwindcss/vite` plugin)
+- Modify: `src/index.css` (Tailwind import + `@theme` block + font imports + dark-mode custom variant)
 - Modify: `src/main.tsx` (import `./index.css`)
 
 **Interfaces:**
-- Produces: `tokens.light`, `tokens.dark` (each `{ base, text, muted, accent }` hex strings) — consumed by `tailwind.config.ts` and `ThemeContext` (Task 3).
+- Produces: `tokens.light`, `tokens.dark` (each `{ base, text, muted, accent }` hex strings, the spec-locked values) and Tailwind utility classes `bg-base-light/dark`, `text-ink-light/dark`, `text-muted-light/dark`, `text-accent-light/dark`, `bg-accent-light/dark`, `border-accent-light/dark`, `border-muted-light/dark`, `font-display`, `font-body`, plus a `dark:` variant keyed off `[data-theme="dark"]` — consumed by `ThemeContext` (Task 3, sets the attribute) and every page/component task from Task 6 onward (uses the utility classes).
 
 - [ ] **Step 1: Write the failing test for tokens**
 
@@ -211,57 +213,66 @@ export const tokens = {
 Run: `npx vitest run src/theme/tokens.test.ts`
 Expected: PASS
 
-- [ ] **Step 5: Init Tailwind config and wire tokens in**
+- [ ] **Step 5: Install the Tailwind v4 Vite plugin and wire it into `vite.config.ts`**
 
 ```bash
-npx tailwindcss init -p
+npm install @tailwindcss/vite
 ```
 
-`tailwind.config.ts`:
+Add the plugin to `vite.config.ts` (alongside the existing `react()` plugin from Task 1):
+
 ```ts
-import type { Config } from 'tailwindcss';
-import { tokens } from './src/theme/tokens';
+/// <reference types="vitest/config" />
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
 
-export default {
-  content: ['./index.html', './src/**/*.{ts,tsx}'],
-  darkMode: ['selector', '[data-theme="dark"]'],
-  theme: {
-    extend: {
-      colors: {
-        base: { light: tokens.light.base, dark: tokens.dark.base },
-        ink: { light: tokens.light.text, dark: tokens.dark.text },
-        muted: { light: tokens.light.muted, dark: tokens.dark.muted },
-        accent: { light: tokens.light.accent, dark: tokens.dark.accent },
-      },
-      fontFamily: {
-        display: ['Fraunces', 'serif'],
-        body: ['Inter', 'sans-serif'],
-      },
-    },
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+  test: {
+    environment: 'jsdom',
+    globals: true,
+    setupFiles: './src/test/setup.ts',
   },
-  plugins: [],
-} satisfies Config;
+});
 ```
 
-- [ ] **Step 6: Add Tailwind directives and font imports to `src/index.css`**
+- [ ] **Step 6: Write `src/index.css` — Tailwind import, theme tokens, dark-mode variant, fonts**
+
+Values here must match `src/theme/tokens.ts` exactly (v4 can't import the `.ts` file, so this is a manual mirror of Step 3's literal hex values):
 
 ```css
+@import 'tailwindcss';
 @import '@fontsource/fraunces/400.css';
 @import '@fontsource/fraunces/600.css';
 @import '@fontsource/inter/400.css';
 @import '@fontsource/inter/500.css';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Attribute-based dark mode (not prefers-color-scheme) — ThemeContext (Task 3) sets data-theme on <html> */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@theme {
+  --color-base-light: #FAF6EF;
+  --color-ink-light: #211D1D;
+  --color-muted-light: #6B6357;
+  --color-accent-light: #E4572E;
+
+  --color-base-dark: #1B1815;
+  --color-ink-dark: #F2ECE3;
+  --color-muted-dark: #B8AE9E;
+  --color-accent-dark: #FF7A54;
+
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Inter', sans-serif;
+}
 
 html {
-  background-color: theme('colors.base.light');
-  color: theme('colors.ink.light');
+  background-color: var(--color-base-light);
+  color: var(--color-ink-light);
 }
 html[data-theme='dark'] {
-  background-color: theme('colors.base.dark');
-  color: theme('colors.ink.dark');
+  background-color: var(--color-base-dark);
+  color: var(--color-ink-dark);
 }
 ```
 
@@ -269,16 +280,19 @@ html[data-theme='dark'] {
 
 Add `import './index.css';` as the first import in `src/main.tsx`.
 
-- [ ] **Step 8: Run the full test suite to confirm nothing broke**
+- [ ] **Step 8: Run the full test suite and a build to confirm nothing broke**
 
 Run: `npx vitest run`
 Expected: PASS (both `App.test.tsx` and `tokens.test.ts`)
+
+Run: `npx vite build`
+Expected: succeeds — confirms the `@tailwindcss/vite` plugin and `@theme`/`@custom-variant` CSS are syntactically valid and compile.
 
 - [ ] **Step 9: Commit**
 
 ```bash
 git add -A
-git commit -m "feat: add theme tokens and Tailwind config with Fraunces/Inter"
+git commit -m "feat: add theme tokens and Tailwind v4 theme with Fraunces/Inter"
 ```
 
 ---
