@@ -10,7 +10,7 @@ export function Contact() {
         <ul className="flex flex-col gap-4">
           {contactLinks.map((link) => (
             <li key={link.id}>
-              <a href={link.href} aria-label={link.label} className="flex flex-col">
+              <a href={link.href} className="flex flex-col">
                 <span className="text-xs uppercase tracking-wide text-muted-light dark:text-muted-dark">{link.label}</span>
                 <span className="text-lg text-accent-light dark:text-accent-dark">{link.value}</span>
               </a>
