@@ -37,6 +37,7 @@ export type Publication = {
   type: 'journal' | 'conference' | 'whitepaper' | 'thesis';
   description?: string;
   links?: { label: string; url: string }[];
+  pdfUrl?: string;
 };
 
 export type ContactLink = {

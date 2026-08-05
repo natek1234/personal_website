@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { describe, it, expect } from 'vitest';
 import { PublicationEntry } from './PublicationEntry';
 import type { Publication } from '../types/content';
@@ -14,6 +15,16 @@ const withLinks: Publication = {
     { label: 'PDF', url: 'https://example.com/paper.pdf' },
     { label: '10.0000/example', url: 'https://doi.org/10.0000/example' },
   ],
+};
+
+const withEmbeddedPdf: Publication = {
+  id: 'thesis-with-pdf',
+  title: 'A thesis with an embedded PDF',
+  authors: ['Ketan Vasudeva'],
+  venue: 'Some University',
+  year: 2024,
+  type: 'thesis',
+  pdfUrl: '/theses/example-thesis.pdf',
 };
 
 describe('PublicationEntry', () => {
@@ -63,5 +74,48 @@ describe('PublicationEntry', () => {
     );
 
     expect(screen.queryByRole('link')).not.toBeInTheDocument();
+  });
+
+  it('keeps the embedded PDF collapsed by default, with a toggle to expand it', () => {
+    render(
+      <ul>
+        <PublicationEntry publication={withEmbeddedPdf} />
+      </ul>
+    );
+
+    expect(screen.queryByTitle(/embedded pdf/i)).not.toBeInTheDocument();
+    const toggle = screen.getByRole('button', { name: /view pdf/i });
+    expect(toggle).toHaveAttribute('aria-expanded', 'false');
+  });
+
+  it('expands to show the embedded PDF viewer when the toggle is clicked, and collapses again on a second click', async () => {
+    const user = userEvent.setup();
+    render(
+      <ul>
+        <PublicationEntry publication={withEmbeddedPdf} />
+      </ul>
+    );
+
+    const toggle = screen.getByRole('button', { name: /view pdf/i });
+    await user.click(toggle);
+
+    expect(toggle).toHaveAttribute('aria-expanded', 'true');
+    expect(screen.getByRole('button', { name: /hide pdf/i })).toBe(toggle);
+    const viewer = screen.getByTitle('A thesis with an embedded PDF PDF');
+    expect(viewer).toHaveAttribute('data', '/theses/example-thesis.pdf');
+
+    await user.click(toggle);
+    expect(screen.queryByTitle(/embedded pdf/i)).not.toBeInTheDocument();
+    expect(toggle).toHaveAttribute('aria-expanded', 'false');
+  });
+
+  it('renders no PDF toggle when a publication has no pdfUrl', () => {
+    render(
+      <ul>
+        <PublicationEntry publication={withLinks} />
+      </ul>
+    );
+
+    expect(screen.queryByRole('button', { name: /view pdf/i })).not.toBeInTheDocument();
   });
 });

@@ -1,7 +1,10 @@
+import { useId, useState } from 'react';
 import type { Publication } from '../types/content';
 
 export function PublicationEntry({ publication }: { publication: Publication }) {
   const links = publication.links ?? [];
+  const [pdfOpen, setPdfOpen] = useState(false);
+  const pdfPanelId = useId();
 
   return (
     <li className="border-l-2 border-accent-light pl-4 dark:border-accent-dark">
@@ -13,7 +16,7 @@ export function PublicationEntry({ publication }: { publication: Publication }) 
       {publication.description && (
         <p className="mt-1 text-xs text-muted-light dark:text-muted-dark">{publication.description}</p>
       )}
-      {links.length > 0 && (
+      {(links.length > 0 || publication.pdfUrl) && (
         <ul className="mt-2 flex flex-wrap gap-3">
           {links.map((link) => {
             const isDoi = link.url.startsWith('https://doi.org/');
@@ -31,7 +34,38 @@ export function PublicationEntry({ publication }: { publication: Publication }) 
               </li>
             );
           })}
+          {publication.pdfUrl && (
+            <li className="text-sm">
+              <button
+                type="button"
+                onClick={() => setPdfOpen((open) => !open)}
+                aria-expanded={pdfOpen}
+                aria-controls={pdfPanelId}
+                className="text-accent-text-light underline dark:text-accent-dark"
+              >
+                {pdfOpen ? '▾ Hide PDF' : '▸ View PDF'}
+              </button>
+            </li>
+          )}
         </ul>
+      )}
+      {publication.pdfUrl && pdfOpen && (
+        <div id={pdfPanelId} className="mt-3">
+          <object
+            data={publication.pdfUrl}
+            type="application/pdf"
+            title={`${publication.title} PDF`}
+            className="h-[70vh] w-full rounded-md border border-muted-light/20 dark:border-muted-dark/20"
+          >
+            <p className="text-sm">
+              Your browser can't display the embedded PDF.{' '}
+              <a href={publication.pdfUrl} className="text-accent-text-light underline dark:text-accent-dark">
+                Open it directly
+              </a>
+              .
+            </p>
+          </object>
+        </div>
       )}
     </li>
   );
