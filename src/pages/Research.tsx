@@ -21,8 +21,8 @@ export function Research() {
           Brain techniques for robotic swarm control. I continued at the University of Toronto's{' '}
           <strong>Aerospace Mechatronics Laboratory</strong> for my M.A.Sc. in Aerospace Engineering, where I chaired
           the Lunar BRICS consortium and led development of the{' '}
-          <strong>Lunar Robotic Construction System (LRCS)</strong> — including regolith containment units (RCUs)
-          for autonomous lunar surface construction. I am now a Ph.D. candidate at the{' '}
+          <strong>Lunar Robotic Construction System (LRCS)</strong>, tasked with bagging and manipulating regolith
+          containment units (RCUs) for autonomous lunar surface construction. I am now a Ph.D. candidate at the{' '}
           <strong>University of Arizona</strong>'s <strong>SpaceTREx Laboratory</strong>, where my research focuses
           on increasing the robustness of multi-modal AI for space robots, bridging terrestrial capabilities with
           space implementation.
