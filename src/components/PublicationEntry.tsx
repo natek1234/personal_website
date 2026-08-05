@@ -1,5 +1,6 @@
 import { useId, useState } from 'react';
 import type { Publication } from '../types/content';
+import { LinkIcon } from './icons/LinkIcon';
 
 export function PublicationEntry({ publication }: { publication: Publication }) {
   const links = publication.links ?? [];
@@ -27,8 +28,9 @@ export function PublicationEntry({ publication }: { publication: Publication }) 
                   href={link.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-accent-text-light underline dark:text-accent-dark"
+                  className="inline-flex items-center gap-1.5 text-accent-text-light underline dark:text-accent-dark"
                 >
+                  <LinkIcon url={link.url} className="h-4 w-4 shrink-0" />
                   {link.label}
                 </a>
               </li>

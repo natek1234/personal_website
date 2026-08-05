@@ -65,6 +65,7 @@ export const publications: Publication[] = [
     description:
       'Designed the Lunar Robotic Construction System (LRCS) for bagging and manipulating Regolith Containment Units (RCUs) — analogous to lunar sandbags — to protect lunar surface structures and equipment from radiation, thermal fluctuations, and micrometeoroid impacts.',
     links: [{ label: 'GitHub', url: 'https://github.com/natek1234/automatic_AHP_and_ZM_2' }],
+    pdfUrl: '/ketan-vasudeva-masc-thesis.pdf',
   },
   {
     id: 'basc-thesis-markov-brains',
@@ -76,5 +77,6 @@ export const publications: Publication[] = [
     description:
       'Developed an evolutionary algorithm using Markov Brains — an artificial-life neural architecture — to evolve autonomous swarm robotic control behaviors, applied to a simulated cave-exploration testbed relevant to space exploration missions.',
     links: [{ label: 'GitHub', url: 'https://github.com/natek1234/MBCaveExplore' }],
+    pdfUrl: '/ketan-vasudeva-basc-thesis.pdf',
   },
 ];
