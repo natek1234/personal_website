@@ -9,9 +9,8 @@ export const cvEntries: CVEntry[] = [
     org: 'University of Arizona',
     dateRange: { start: '2026' },
     bullets: [
-      'Thesis: Multi-modal AI for Autonomous Space Service Robots',
       { text: 'Member of the SpaceTREx Laboratory', url: 'https://spacetrex.arizona.edu/' },
-      'Focus: lunar surface construction, regolith containment systems, autonomous space robotics',
+      'Thesis: Multi-modal AI for Autonomous Space Service Robots',
     ],
   },
   {
