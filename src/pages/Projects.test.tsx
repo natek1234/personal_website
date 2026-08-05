@@ -42,8 +42,25 @@ describe('Projects', () => {
         <Projects />
       </HelmetProvider>
     );
-    const githubLink = screen.getByRole('link', { name: 'GitHub' });
-    expect(githubLink).toHaveAttribute('href', 'https://github.com/natek1234/literature_scraping_agent');
-    expect(githubLink.querySelector('svg')).toBeInTheDocument();
+    const githubLinks = screen.getAllByRole('link', { name: 'GitHub' });
+    const litAgentLink = githubLinks.find(
+      (el) => el.getAttribute('href') === 'https://github.com/natek1234/literature_scraping_agent'
+    );
+    expect(litAgentLink).toBeDefined();
+    expect(litAgentLink?.querySelector('svg')).toBeInTheDocument();
+  });
+
+  it('renders the SpaceApps hackathon GitHub link with an icon', () => {
+    render(
+      <HelmetProvider>
+        <Projects />
+      </HelmetProvider>
+    );
+    const githubLinks = screen.getAllByRole('link', { name: 'GitHub' });
+    const spaceAppsLink = githubLinks.find(
+      (el) => el.getAttribute('href') === 'https://github.com/natek1234/3.14Heads-SpaceApps2020'
+    );
+    expect(spaceAppsLink).toBeDefined();
+    expect(spaceAppsLink?.querySelector('svg')).toBeInTheDocument();
   });
 });

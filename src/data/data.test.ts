@@ -18,7 +18,7 @@ describe('content data integrity', () => {
   it('has unique publication ids and valid types', () => {
     expect(idsAreUnique(publications)).toBe(true);
     for (const pub of publications) {
-      expect(['journal', 'conference', 'whitepaper']).toContain(pub.type);
+      expect(['journal', 'conference', 'whitepaper', 'thesis']).toContain(pub.type);
     }
   });
 

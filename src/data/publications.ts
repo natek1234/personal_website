@@ -55,4 +55,26 @@ export const publications: Publication[] = [
     type: 'conference',
     description: 'Code: SSC21-P2-37',
   },
+  {
+    id: 'masc-thesis-lrcs',
+    title: 'Lunar Robotic Construction System for Raw Regolith',
+    authors: ['Ketan Vasudeva'],
+    venue: 'M.A.Sc. Thesis, University of Toronto Institute for Aerospace Studies (UTIAS)',
+    year: 2025,
+    type: 'thesis',
+    description:
+      'Designed the Lunar Robotic Construction System (LRCS) for bagging and manipulating Regolith Containment Units (RCUs) — analogous to lunar sandbags — to protect lunar surface structures and equipment from radiation, thermal fluctuations, and micrometeoroid impacts.',
+    links: [{ label: 'GitHub', url: 'https://github.com/natek1234/automatic_AHP_and_ZM_2' }],
+  },
+  {
+    id: 'basc-thesis-markov-brains',
+    title: 'Markov Brain Techniques for Robotic Swarm Control in Space Exploration',
+    authors: ['Ketan Vasudeva'],
+    venue: 'B.A.Sc. Thesis, University of Toronto',
+    year: 2023,
+    type: 'thesis',
+    description:
+      'Developed an evolutionary algorithm using Markov Brains — an artificial-life neural architecture — to evolve autonomous swarm robotic control behaviors, applied to a simulated cave-exploration testbed relevant to space exploration missions.',
+    links: [{ label: 'GitHub', url: 'https://github.com/natek1234/MBCaveExplore' }],
+  },
 ];

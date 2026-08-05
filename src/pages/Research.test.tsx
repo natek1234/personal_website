@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { describe, it, expect } from 'vitest';
@@ -38,19 +38,20 @@ describe('Research', () => {
     // Single combined paragraph, not two separate ones.
     const summaryParagraphs = document.querySelectorAll('article > p');
     expect(summaryParagraphs).toHaveLength(1);
+    const summary = within(summaryParagraphs[0] as HTMLElement);
 
-    expect(screen.getByText(/\(RCUs\)/)).toBeInTheDocument();
-    expect(screen.queryByText(/LUNAR BRIC\(S\)/)).not.toBeInTheDocument();
+    expect(summary.getByText(/\(RCUs\)/)).toBeInTheDocument();
+    expect(summary.queryByText(/LUNAR BRIC\(S\)/)).not.toBeInTheDocument();
 
-    expect(screen.getByText(/I am now a Ph\.D\. candidate/)).toBeInTheDocument();
-    expect(screen.queryByText(/I'm now/)).not.toBeInTheDocument();
+    expect(summary.getByText(/I am now a Ph\.D\. candidate/)).toBeInTheDocument();
+    expect(summary.queryByText(/I'm now/)).not.toBeInTheDocument();
 
     expect(
-      screen.getByText(
+      summary.getByText(
         /focuses on increasing the robustness of multi-modal AI for space robots, bridging terrestrial capabilities with space implementation/
       )
     ).toBeInTheDocument();
-    expect(screen.queryByText(/building on my earlier lunar construction work/)).not.toBeInTheDocument();
+    expect(summary.queryByText(/building on my earlier lunar construction work/)).not.toBeInTheDocument();
   });
 
   it('renders the publications timeline inline, with no separate publications link', () => {
@@ -77,7 +78,8 @@ describe('Research', () => {
     );
     for (const pub of publications) {
       for (const link of pub.links ?? []) {
-        expect(screen.getByRole('link', { name: link.label })).toHaveAttribute('href', link.url);
+        const matches = screen.getAllByRole('link', { name: link.label });
+        expect(matches.some((el) => el.getAttribute('href') === link.url)).toBe(true);
         expect(link.label).not.toBe('DOI');
       }
     }

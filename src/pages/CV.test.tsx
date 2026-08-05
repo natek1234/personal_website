@@ -77,7 +77,8 @@ describe('CV', () => {
     for (const pub of publications) {
       expect(screen.getByText(pub.title)).toBeInTheDocument();
       for (const link of pub.links ?? []) {
-        expect(screen.getByRole('link', { name: link.label })).toHaveAttribute('href', link.url);
+        const matches = screen.getAllByRole('link', { name: link.label });
+        expect(matches.some((el) => el.getAttribute('href') === link.url)).toBe(true);
       }
     }
   });

@@ -34,7 +34,7 @@ export type Publication = {
   authors: string[];
   venue: string;
   year: number;
-  type: 'journal' | 'conference' | 'whitepaper';
+  type: 'journal' | 'conference' | 'whitepaper' | 'thesis';
   description?: string;
   links?: { label: string; url: string }[];
 };

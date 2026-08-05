@@ -47,6 +47,7 @@ export const projects: Project[] = [
     summary:
       'Built an educational sandbox tool simulating the challenges of communicating with people on Mars, using NASA/CSA data sets, React.js, Node.js/Express.js, and Python.',
     tags: ['React', 'Node.js', 'Python', 'Hackathon'],
+    links: [{ label: 'GitHub', url: 'https://github.com/natek1234/3.14Heads-SpaceApps2020' }],
   },
   {
     id: 'sound-of-space-podcast',
