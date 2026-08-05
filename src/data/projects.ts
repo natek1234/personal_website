@@ -65,6 +65,15 @@ export const projects: Project[] = [
     ],
   },
   {
+    id: 'ewb-policy-advocacy',
+    title: 'Engineers Without Borders Canada — Policy and Advocacy Team',
+    dateRange: { start: '2018', end: '2019' },
+    summary:
+      "Advocated for EWB Canada's 2030 Sustainable Development Goals platform, including meetings with Members of Parliament to build support for the platform.",
+    role: 'Policy and Advocacy Team Member',
+    tags: ['Policy', 'Advocacy', 'Nonprofit'],
+  },
+  {
     id: 'utdl-designathon',
     title: 'UTDL Designathon',
     dateRange: { start: '2019', end: '2019' },
