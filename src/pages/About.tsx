@@ -13,7 +13,7 @@ export function About() {
         <img
           src="/images/headshot.jpg"
           alt="Ketan Vasudeva"
-          className="float-left mb-4 mr-6 h-40 w-40 shrink-0 rounded-lg object-cover shadow-md"
+          className="mx-auto mb-4 block h-40 w-40 shrink-0 rounded-lg object-cover shadow-md sm:float-left sm:mr-6"
         />
         <p className="mb-4">
           I'm an aerospace engineering PhD candidate at the University of Arizona's SpaceTREx Laboratory, working on
