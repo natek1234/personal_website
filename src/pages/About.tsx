@@ -16,23 +16,32 @@ export function About() {
           className="mx-auto mb-4 block h-40 w-40 shrink-0 rounded-lg object-cover shadow-md sm:float-left sm:mr-6"
         />
         <p className="mb-4">
-          I'm an aerospace engineering PhD candidate at the University of Arizona's SpaceTREx Laboratory, working on
-          lunar surface construction, regolith containment systems, and autonomous space robotics. I got here by way
-          of the University of Toronto, where a BASc in Engineering Science (Robotics Major) had me building CubeSats
-          with the University of Toronto Aerospace Team and prototyping hardware at hackathons and designathons, and
-          an MASc where I designed a lunar robotic construction system for raw regolith and helped chair the Lunar
-          BRICS consortium. That progression — from student projects to a thesis-driving research question — is what
-          pulled me toward a PhD, and now shapes my work at the intersection of mechanical design, robotics, and
-          mission concept development.
+          I am an Aerospace Engineering PhD student at the University of Arizona's SpaceTREx Laboratory, presently
+          working on bridging the robustness gap between terrestrial multi-modal AI systems, and space robotic
+          systems. My academic adventure began far before the university scene, reading space books in the school
+          library and taking an interest in all things science. This drew me to the Engineering Science program at
+          the University of Toronto, where I graduated in the Robotics Major with honours. Already at this stage I
+          had taken the leap into space, working with the University of Toronto Aerospace Team (UTAT) to build
+          satellites and working for GHGSat, a greenhouse gas satellite company. It is in this program that I was
+          able to combine my interests in robotics, AI, space, and bio-inspired systems to explore a thesis on
+          Markov Brains for autonomous swarm robotics in space exploration, developing my own evolutionary algorithm
+          software. From here, I continued on to complete my MASc at the University of Toronto Institute for
+          Aerospace Studies (UTIAS), working in the Aerospace Mechatronics Laboratory on a Lunar Robotic Construction
+          System (LRCS). This thesis was also supervised and funded by MDA Space and it led to my involvement in the
+          Lunar BRICS consortium. The purpose of the LRCS is to bag and manipulate Regolith Containment Units (RCUs),
+          analogous to lunar sandbags, in order to protect lunar surface structures and equipment from environmental
+          hazards, such as radiation, thermal fluctuations, and ballistic impacts (e.g., micrometeoroids). It is by
+          continuing this work and pursuing a new research direction that I have now come to the University of
+          Arizona.
         </p>
         <p>
-          Outside the lab, I build things end to end — writing production TypeScript and Python, standing up
-          full-stack web apps on Cloudflare Pages and FastAPI, and experimenting with multi-agent LLM systems built
-          with tools like Claude Code. I'm equally comfortable in a CAD tool, a CFD solver, or a React codebase. That
-          same range carries into life outside of engineering: I played varsity ultimate frisbee at the University of
-          Toronto, host The Sound of Space podcast, and have stayed involved in STEM education and policy advocacy
-          work since undergrad. That mix — formal research training plus a builder's instinct for shipping working
-          software — is what this site is meant to show: not just what I've studied, but what I've made.
+          However, my life is not all research and engineering. I am a staunch believer that we must push ethical
+          uses of technology, and human-centered development. There must be purpose behind our work, and this
+          purpose should benefit people and society as a whole. I am a strong advocate for the importance of STEM
+          communication, having founded, led, and hosted my own space podcast (TSOS) for a number of years. I have
+          advocated for inclusive policy with Engineers Without Borders (EWB), believing that we are better together.
+          Whether through education, policy, or technology, I hope to continue working towards a better world for
+          all.
         </p>
         <div className="clear-both" />
       </article>

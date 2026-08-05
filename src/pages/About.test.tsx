@@ -11,7 +11,7 @@ describe('About', () => {
       </HelmetProvider>
     );
     expect(screen.getByRole('heading', { level: 1, name: /about/i })).toBeInTheDocument();
-    expect(screen.getByText(/TypeScript/)).toBeInTheDocument();
+    expect(screen.getByText(/Markov Brains/)).toBeInTheDocument();
     expect(screen.queryByRole('list', { name: /skills/i })).not.toBeInTheDocument();
   });
 
