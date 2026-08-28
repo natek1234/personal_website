@@ -23,8 +23,11 @@ describe('Research', () => {
     // PhD — SpaceTREx Laboratory, University of Arizona
     expect(screen.getByText(/SpaceTREx Laboratory/)).toBeInTheDocument();
     expect(screen.getByText(/University of Arizona/)).toBeInTheDocument();
-    // No supervisor name — lab/university credited instead
-    expect(screen.queryByText(/Jekan Thanga/)).not.toBeInTheDocument();
+    // No supervisor name in the narrative summary — lab/university credited instead. (A
+    // supervisor's name can still legitimately appear in a publication's own author list —
+    // that's a citation, not a personal mention — so this only checks the summary paragraph.)
+    const summaryParagraph = document.querySelector('article > p') as HTMLElement;
+    expect(within(summaryParagraph).queryByText(/Jekan Thanga/)).not.toBeInTheDocument();
   });
 
   it('merges the summary into a single paragraph with the trimmed RCU parenthetical and the specific focus statement', () => {

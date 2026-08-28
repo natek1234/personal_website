@@ -2,6 +2,8 @@ import { useId, useState } from 'react';
 import type { Publication } from '../types/content';
 import { LinkIcon } from './icons/LinkIcon';
 
+const SITE_OWNER = 'Ketan Vasudeva';
+
 export function PublicationEntry({ publication }: { publication: Publication }) {
   const links = publication.links ?? [];
   const [pdfOpen, setPdfOpen] = useState(false);
@@ -12,7 +14,13 @@ export function PublicationEntry({ publication }: { publication: Publication }) 
       <p className="text-xs font-medium text-accent-text-light dark:text-accent-dark">{publication.year}</p>
       <h3 className="font-display text-lg">{publication.title}</h3>
       <p className="text-sm text-muted-light dark:text-muted-dark">
-        {publication.authors.join(', ')} — {publication.venue}
+        {publication.authors.map((author, i) => (
+          <span key={author}>
+            {i > 0 && ', '}
+            {author === SITE_OWNER ? <strong className="font-semibold text-ink-light dark:text-ink-dark">{author}</strong> : author}
+          </span>
+        ))}{' '}
+        — {publication.venue}
       </p>
       {publication.description && (
         <p className="mt-1 text-xs text-muted-light dark:text-muted-dark">{publication.description}</p>

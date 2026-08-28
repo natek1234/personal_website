@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import { HelmetProvider } from 'react-helmet-async';
 import { describe, it, expect } from 'vitest';
 import { CV } from './CV';
@@ -65,7 +65,12 @@ describe('CV', () => {
       'href',
       'https://mechatronics.aerospace.utoronto.ca/'
     );
-    expect(screen.queryByText(/Jekan Thanga/)).not.toBeInTheDocument();
+    // No supervisor name in the Education section — lab/university credited instead. (A
+    // supervisor's name can still legitimately appear in a publication's own author list —
+    // that's a citation, not a personal mention — so this only checks Education, not the
+    // whole page.)
+    const educationSection = screen.getByRole('heading', { name: 'Education' }).closest('section') as HTMLElement;
+    expect(within(educationSection).queryByText(/Jekan Thanga/)).not.toBeInTheDocument();
   });
 
   it('renders the Publications section sourced from the same data as the Research page, with DOI links', () => {

@@ -17,6 +17,15 @@ const withLinks: Publication = {
   ],
 };
 
+const withCoAuthors: Publication = {
+  id: 'co-authored-paper',
+  title: 'A co-authored paper',
+  authors: ['Jane Collaborator', 'Ketan Vasudeva', 'Sam Colleague'],
+  venue: 'Journal of Testing',
+  year: 2025,
+  type: 'journal',
+};
+
 const withEmbeddedPdf: Publication = {
   id: 'thesis-with-pdf',
   title: 'A thesis with an embedded PDF',
@@ -35,7 +44,21 @@ describe('PublicationEntry', () => {
       </ul>
     );
     expect(screen.getByText('A linked paper')).toBeInTheDocument();
-    expect(screen.getByText(/Ketan Vasudeva — Journal of Testing/)).toBeInTheDocument();
+    expect(screen.getByText('A linked paper').closest('li')?.textContent).toContain('Ketan Vasudeva — Journal of Testing');
+  });
+
+  it('bolds the site owner\'s name within a multi-author list, leaving co-authors unbolded', () => {
+    render(
+      <ul>
+        <PublicationEntry publication={withCoAuthors} />
+      </ul>
+    );
+
+    const authorsLine = screen.getByText('A co-authored paper').closest('li');
+    expect(authorsLine?.textContent).toContain('Jane Collaborator, Ketan Vasudeva, Sam Colleague — Journal of Testing');
+
+    const bolded = authorsLine?.querySelector('strong');
+    expect(bolded?.textContent).toBe('Ketan Vasudeva');
   });
 
   it('renders each publication link with its label and href', () => {

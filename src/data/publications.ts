@@ -4,7 +4,7 @@ export const publications: Publication[] = [
   {
     id: 'lunar-construction-survey',
     title: 'Lunar Construction: A State-of-the-Art Survey',
-    authors: ['Ketan Vasudeva'],
+    authors: ['Ketan Vasudeva', 'M. Reza Emami', 'Cameron Dickinson'],
     venue: 'Progress in Aerospace Sciences',
     year: 2025,
     type: 'journal',
@@ -13,7 +13,7 @@ export const publications: Publication[] = [
   {
     id: 'lrcs-design-conceptualization',
     title: 'Lunar Robotic Construction System Using Raw Regolith: Design Conceptualization',
-    authors: ['Ketan Vasudeva'],
+    authors: ['Ketan Vasudeva', 'M. Reza Emami'],
     venue: 'Aerospace (MDPI)',
     year: 2025,
     type: 'journal',
@@ -22,7 +22,7 @@ export const publications: Publication[] = [
   {
     id: 'lrcs-system-engineering',
     title: 'Lunar Robotic Construction System Using Raw Regolith: System Engineering',
-    authors: ['Ketan Vasudeva'],
+    authors: ['Ketan Vasudeva', 'M. Reza Emami'],
     venue: 'Aerospace (MDPI)',
     year: 2026,
     type: 'journal',
@@ -31,7 +31,20 @@ export const publications: Publication[] = [
   {
     id: 'pathfinder-lunar-construction-mission',
     title: 'A Pathfinder Lunar Construction Mission Concept Using Regolith Filled Bags',
-    authors: ['Ketan Vasudeva'],
+    authors: [
+      'Cameron S. Dickinson',
+      'Fu Nan Shi',
+      'Ketan Vasudeva',
+      'Rudranarayan M. Mukherjee',
+      'Joshua Blanchard',
+      'Steve Dubrule',
+      'Julia Empey',
+      'Justin Kugler',
+      'Pooneh Maghoul',
+      'Andrew J. Ryan',
+      'Paul van Susante',
+      'Jekan Thangavelautham',
+    ],
     venue: 'Aerospace (MDPI)',
     year: 2026,
     type: 'journal',
@@ -40,7 +53,7 @@ export const publications: Publication[] = [
   {
     id: 'eucass-isru-settlement',
     title: 'Sustainable Human-Centred Lunar Settlement via ISRU Technologies',
-    authors: ['Ketan Vasudeva'],
+    authors: ['Saanjali Maharaj', 'Emily Nassar', 'Rima Uraiqat', 'Ketan Vasudeva', 'Anne Jing'],
     venue: 'EUCASS Conference',
     year: 2022,
     type: 'conference',
@@ -67,7 +80,7 @@ export const publications: Publication[] = [
   {
     id: 'asee-virtual-teams-engineering-courses',
     title: 'Best Practices for Integrating Virtual International Team Collaborations into Multidisciplinary Engineering Design Courses',
-    authors: ['Ketan Vasudeva'],
+    authors: ['Anuli Ndubuisi', 'Ketan Vasudeva', 'Elham Marzi'],
     venue: 'ASEE St Lawrence Section Conference',
     year: 2021,
     type: 'conference',
