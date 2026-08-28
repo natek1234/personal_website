@@ -22,7 +22,7 @@ export const cvEntries: CVEntry[] = [
     bullets: [
       { text: 'Participated in and chaired the Lunar BRICS consortium', url: 'https://lunar-bric.arizona.edu/' },
       { text: 'Member of the Aerospace Mechatronics Laboratory', url: 'https://mechatronics.aerospace.utoronto.ca/' },
-      'Thesis: Lunar Robotic Construction System for Raw Regolith',
+      'Thesis: A Lunar Robotic Construction System for Raw Regolith',
     ],
   },
   {

@@ -3,7 +3,7 @@ import type { Publication } from '../types/content';
 export const publications: Publication[] = [
   {
     id: 'lunar-construction-survey',
-    title: 'Lunar Construction — State-of-the-Art Survey',
+    title: 'Lunar Construction: A State-of-the-Art Survey',
     authors: ['Ketan Vasudeva'],
     venue: 'Progress in Aerospace Sciences',
     year: 2025,
@@ -12,7 +12,7 @@ export const publications: Publication[] = [
   },
   {
     id: 'lrcs-design-conceptualization',
-    title: 'Lunar Robotic Construction System Using Raw Regolith — Design Conceptualization',
+    title: 'Lunar Robotic Construction System Using Raw Regolith: Design Conceptualization',
     authors: ['Ketan Vasudeva'],
     venue: 'Aerospace (MDPI)',
     year: 2025,
@@ -21,7 +21,7 @@ export const publications: Publication[] = [
   },
   {
     id: 'lrcs-system-engineering',
-    title: 'Lunar Robotic Construction System Using Raw Regolith — System Engineering',
+    title: 'Lunar Robotic Construction System Using Raw Regolith: System Engineering',
     authors: ['Ketan Vasudeva'],
     venue: 'Aerospace (MDPI)',
     year: 2026,
@@ -57,7 +57,7 @@ export const publications: Publication[] = [
   },
   {
     id: 'masc-thesis-lrcs',
-    title: 'Lunar Robotic Construction System for Raw Regolith',
+    title: 'A Lunar Robotic Construction System for Raw Regolith',
     authors: ['Ketan Vasudeva'],
     venue: 'M.A.Sc. Thesis, University of Toronto Institute for Aerospace Studies (UTIAS)',
     year: 2025,
