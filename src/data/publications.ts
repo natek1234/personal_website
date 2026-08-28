@@ -29,6 +29,15 @@ export const publications: Publication[] = [
     links: [{ label: '10.3390/aerospace13060492', url: 'https://doi.org/10.3390/aerospace13060492' }],
   },
   {
+    id: 'pathfinder-lunar-construction-mission',
+    title: 'A Pathfinder Lunar Construction Mission Concept Using Regolith Filled Bags',
+    authors: ['Ketan Vasudeva'],
+    venue: 'Aerospace (MDPI)',
+    year: 2026,
+    type: 'journal',
+    links: [{ label: '10.3390/aerospace13030223', url: 'https://doi.org/10.3390/aerospace13030223' }],
+  },
+  {
     id: 'eucass-isru-settlement',
     title: 'Sustainable Human-Centred Lunar Settlement via ISRU Technologies',
     authors: ['Ketan Vasudeva'],
@@ -39,7 +48,7 @@ export const publications: Publication[] = [
   },
   {
     id: 'finch-smallsat',
-    title: 'FINCH — Accessible Remote Sensing Satellite Missions',
+    title: 'FINCH: A Blueprint for Accessible and Scientifically Valuable Remote Sensing Satellite Missions',
     authors: ['Ketan Vasudeva'],
     venue: 'Small Satellite Conference',
     year: 2022,
@@ -54,6 +63,15 @@ export const publications: Publication[] = [
     year: 2021,
     type: 'conference',
     description: 'Code: SSC21-P2-37',
+  },
+  {
+    id: 'asee-virtual-teams-engineering-courses',
+    title: 'Best Practices for Integrating Virtual International Team Collaborations into Multidisciplinary Engineering Design Courses',
+    authors: ['Ketan Vasudeva'],
+    venue: 'ASEE St Lawrence Section Conference',
+    year: 2021,
+    type: 'conference',
+    links: [{ label: 'Scholaris', url: 'https://utoronto.scholaris.ca/items/71d50dfc-95b3-4eeb-a361-f4699aa90124' }],
   },
   {
     id: 'masc-thesis-lrcs',
