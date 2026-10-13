@@ -46,7 +46,7 @@ describe('CV', () => {
     expect(screen.getByText(/B\.A\.Sc\., Engineering Science/)).toBeInTheDocument();
 
     // Each degree's points should be separate <li> bullets.
-    expect(screen.getByText("Thesis: Multi-modal AI for Autonomous Space Service Robots").closest('li')).toBeInTheDocument();
+    expect(screen.getByText("Thesis: Multi-modal AI for Autonomous Lunar Construction").closest('li')).toBeInTheDocument();
     expect(screen.getByText('Minor in Business').closest('li')).toBeInTheDocument();
     expect(screen.getByText("Dean's List").closest('li')).toBeInTheDocument();
   });

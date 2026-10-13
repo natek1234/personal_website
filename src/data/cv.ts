@@ -10,7 +10,7 @@ export const cvEntries: CVEntry[] = [
     dateRange: { start: '2026' },
     bullets: [
       { text: 'Member of the SpaceTREx Laboratory', url: 'https://spacetrex.arizona.edu/' },
-      'Thesis: Multi-modal AI for Autonomous Space Service Robots',
+      'Thesis: Multi-modal AI for Autonomous Lunar Construction',
     ],
   },
   {
