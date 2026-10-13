@@ -51,6 +51,27 @@ export const publications: Publication[] = [
     links: [{ label: '10.3390/aerospace13030223', url: 'https://doi.org/10.3390/aerospace13030223' }],
   },
   {
+    id: 'spaceops-lunar-bricks-conops',
+    title:
+      'Concept of Operations for a Demonstration Mission of In-Situ Lunar Regolith Bag Construction for Artemis Missions (Lunar BRICS)',
+    authors: [
+      'Simon Micheau',
+      'Samuel Crane',
+      'Cameron Dickinson',
+      'Julia Empey',
+      'Theodora Girgis',
+      'Rudranarayan Mukherjee',
+      'Andrew Ogilvie',
+      'Alyssa Van Dinter',
+      'Ketan Vasudeva',
+      'Jekanthan Thangavelautham',
+    ],
+    venue: 'SpaceOps Conference',
+    year: 2025,
+    type: 'conference',
+    links: [{ label: '10.82217/SPACEOPS2025_161', url: 'https://doi.org/10.82217/SPACEOPS2025_161' }],
+  },
+  {
     id: 'eucass-isru-settlement',
     title: 'Sustainable Human-Centred Lunar Settlement via ISRU Technologies',
     authors: ['Saanjali Maharaj', 'Emily Nassar', 'Rima Uraiqat', 'Ketan Vasudeva', 'Anne Jing'],
